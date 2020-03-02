@@ -1,0 +1,28 @@
+.ContactCard {
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    width: 280px;
+    height: 140px;
+    border-style: solid;
+    border-radius: 12px;
+    background: rgb(0,158,190);
+    background: radial-gradient(circle, rgba(#223254,.04)rgba(#223254,0));
+
+    font-family: Avenir, sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+.ContactCard h3 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.ContactCard spam {
+    font-weight: 400;
+    opacity: .8;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Style.css';
 
 
 class ContactTile extends React.Component {
@@ -6,20 +7,11 @@ class ContactTile extends React.Component {
         super(props);
     }
     render() {
-        const mystyle = {
-            color: "#222222",
-            backgroundColor: "#EEEEEE",
-            padding: "10px",
-            margin: "10px",
-            width: "300px",
-            borderStyle: "solid"
-          };
-
         return (
-            <div style={mystyle}>
-                <p>{this.props.contact.lastName}</p>
-                <p>{this.props.contact.caseRole}</p>
-                <p>{this.props.contact.email}</p>
+            <div className="ContactCard">
+                <h3>{this.props.contact.firstName} {this.props.contact.lastName}</h3>
+                <spam>{this.props.contact.email}</spam>
+                <p>#{this.props.contact.courtCase.id}</p>
             </div>
         );
     }
