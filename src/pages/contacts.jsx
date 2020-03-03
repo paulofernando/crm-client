@@ -38,11 +38,13 @@ const Contacts = () => {
     if (!data) return <p>Not found</p>;
   
     return (
-      <Fragment>        
-        {data.contacts &&
-          data.contacts.map(contact => (
-            <ContactTile key={contact.id} contact={contact} />
-          ))}
+      <Fragment>
+        <div className="cardContainer">          
+            {data.contacts &&
+              data.contacts.map(contact => (                
+                  <ContactTile key={contact.id} contact={contact} />
+              ))}
+          </div>        
       </Fragment>
     );
   };
