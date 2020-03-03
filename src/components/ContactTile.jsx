@@ -1,7 +1,6 @@
 import React from 'react';
 import './Style.css';
 
-
 class ContactTile extends React.Component {
     constructor(props) {
         super(props);
