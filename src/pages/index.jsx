@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Contact from './contact';
 import Contacts from './contacts';
-import CourtCases from './courtCases';
+import CourtCases from './court-cases';
 import Dashboard from './dashboard';
+import CreateContactForm from './contact-form';
 //import { Footer, PageContainer } from '../components/';
 
 export default function Pages() {
@@ -15,6 +18,7 @@ export default function Pages() {
         <CourtCases path="/cases" />
         <Contacts path="/contacts" />
         <Contact path="/contact/:contactId" />
+        <CreateContactForm path="/contact/create" />
       </Router>
     </Fragment>
   );

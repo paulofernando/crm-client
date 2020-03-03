@@ -59,3 +59,26 @@
   text-decoration: none;   
   cursor: pointer;
 }
+
+.contactForm {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.formButtonContainer {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formField {  
+  margin-bottom: 20px;
+}
+
+.formButton {  
+  margin: 20px;
+}
+
+.formCaseIdInput {  
+  width: 200px;
+}
