@@ -13,31 +13,21 @@ const InnerForm = props => {
 
     return (
         <Form className="contactForm" onSubmit={handleSubmit}>
-            <Form.Label>First name</Form.Label>
-            <Form.Control className="formField" type="input" placeholder="John" />
+            <Form.Label>Title</Form.Label>
+            <Form.Control className="formField" type="input"/>
 
-            <Form.Label>Last name</Form.Label>
-            <Form.Control className="formField" type="input" placeholder="Smith" />
+            <Form.Label>Description</Form.Label>
+            <Form.Control className="formField" type="textarea"/>
 
-            <Form.Label>Email address</Form.Label>
-            <Form.Control className="formField" type="email" placeholder="john@email.com" />
+            <Form.Label>Value</Form.Label>
+            <Form.Control className="formField formSmallInput" type="input"/>
 
-            <Form.Label>Court Role</Form.Label>
-            <p>
-                <ToggleButtonGroup type="checkbox">
-                    <ToggleButton variant="outline-primary" value={'Accused'}>Accused</ToggleButton>
-                    <ToggleButton variant="outline-primary" value={'Barrister'}>Barrister</ToggleButton>
-                    <ToggleButton variant="outline-primary" value={'Judge'}>Judge</ToggleButton>
-                    <ToggleButton variant="outline-primary" value={'Prosecutor'}>Prosecutor</ToggleButton>
-                </ToggleButtonGroup>
-            </p>
-
-            <Form.Label>Case ID</Form.Label>
-            <Form.Control className="formField formSmallInput" type="input" placeholder="" />
+            <Form.Label>Court date</Form.Label>            
+            <Form.Control className="formField formSmallInput" type="input"/>
 
             <div className="formButtonContainer">
                 <Button className="formButton" type='submit' disabled={isSubmitting} variant="primary">
-                    Create Contact
+                    Create Case
                 </Button>
                 <Button className="formButton" disabled={isSubmitting} variant="secondary">
                     Reset
@@ -47,7 +37,7 @@ const InnerForm = props => {
     )
 }
 
-const CreateContactForm = withFormik({
+const CreateCourtCaseForm = withFormik({
     mapPropsToValues: () => ({ firstName: '', lastName: '', caseRole: '', email: '', courtCaseId: '' }),
 
     validationSchema: validContactSchema,
@@ -64,7 +54,7 @@ const CreateContactForm = withFormik({
         setSubmitting(false)
     },
 
-    displayName: 'CreateContactForm'
+    displayName: 'CreateCourtCaseForm'
 })(InnerForm)
 
-export default CreateContactForm
+export default CreateCourtCaseForm
