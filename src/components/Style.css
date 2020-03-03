@@ -1,3 +1,11 @@
+body {
+    background-color: #282c34;
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: Arial;
+}
+
 .contactCard {
     color: white;
     margin: 30px;
@@ -84,10 +92,16 @@
     justify-content: center;
 }
 
-body {
-    background-color: #282c34;
-    color: white;
-    padding-left: 10%;
-    padding-right: 10%;
-    font-family: Arial;
-  }
+.courtCaseCard {
+    margin-bottom: 60px;
+}
+
+.courtCaseValue {
+    float: right;
+    color: black;
+    background-color: limegreen;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: small;
+    opacity: .9;
+}
