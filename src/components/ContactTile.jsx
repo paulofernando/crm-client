@@ -1,10 +1,7 @@
 import React from 'react';
 import './Style.css';
 
-class ContactTile extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+class ContactTile extends React.Component {    
     render() {
         return (
             <div className="contactCard">

@@ -2,13 +2,9 @@ import React from 'react';
 import './Style.css';
 
 import ContactTileSmall from "../components/ContactTileSmall";
-import ContactTile from './ContactTile';
 import NumberFormat from 'react-number-format';
 
 class CourtCaseTile extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="courtCaseCard">
