@@ -1,3 +1,11 @@
+body {
+    background-color: #282c34;
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: Arial;
+}
+
 .contactCard {
     color: white;
     margin: 30px;
@@ -10,38 +18,67 @@
     -moz-osx-font-smoothing: grayscale;
     -moz-font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
+}
 
+.smallContactCard {
+    color: white;
+    margin: 10px;
+    width: 80px;
+    height: 40px;
+}
+
+.contactCard > div, .smallContactCard > div {
+    border-style: solid;
+    border-color: white;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
 .contactCard > div {
     padding: 10px;
-    border-style: solid;
     border-radius: 12px;
+    border-width: 3px;
 }
 
-.contactCard > div.accused {
+.smallContactCard > div {
+    padding: 5px;
+    border-radius: 6px;
+    border-width: 1px;
+}
+
+div.accused {
     background-color: #8063e1;
     background-image: linear-gradient(135deg, #bd7be8, #8063e1);
     box-shadow: 5px 5px 5px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
 }
 
-.contactCard > div.judge {    
+div.accused {
+    background-color: #8063e1;
+    background-image: linear-gradient(135deg, #bd7be8, #8063e1);
+    box-shadow: 5px 5px 5px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
+}
+
+div.judge {    
     background-color: #3f58e3;
     background-image: linear-gradient(135deg, #7f94fc, #3f58e3);
     box-shadow: 5px 5px 5px rgba(34,50,84,0.5), 1px 1px 0px 1px #3f58e3;
 }
 
-.contactCard > div.barrister {
+div.barrister {
     background-color: #2c6fd1;
     background-image: linear-gradient(135deg, #21bbfe, #2c6fd1);
     box-shadow: 5px 5px 5px rgba(34,50,84,0.5), 1px 1px 0px 1px #2c6fd1;
 }
 
-.contactCard > div.prosecutor {
+div.prosecutor {
     background-color: #352f64;
     background-image: linear-gradient(135deg, #415197, #352f64);
     box-shadow: 5px 5px 5px rgba(34,50,84,0.1), 1px 1px 0px 1px #352f64;
+}
+
+.contactCard > div:hover, .smallContactCard > div:hover {
+    border-color: darkorange;
+    transform: scale(1.1);
 }
 
 .contactCard h3 {
@@ -49,16 +86,28 @@
     font-weight: 800;
 }
 
-.contactCard spam {
-    font-weight: 400;
+.contactCard span {
+    font-weight: 500;
     opacity: 0.8;
 }
 
 .cardContainer {
-    padding-left: 10%;
-    padding-right: 10%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+.courtCaseCard {
+    margin-bottom: 60px;
+}
+
+.courtCaseValue {
+    float: right;
+    color: black;
+    background-color: limegreen;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: small;
+    opacity: .9;
 }

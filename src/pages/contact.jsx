@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import ContactTile from "../components/ContactTile";
+import ContactDetails from "../components/contact-details";
 
 import { CONTACT_TILE_DATA } from "./contacts";
 
-export const GET_CONTACT_DETAILS = gql`
-  query {
-    contact(id: 10) {
+export const GET_CONTACT_DETAILS = gql`  
+    query ContactDetails($contactId: ID!) {
+      contact(id: $contactId) {
         ...ContactTile
     }
   }
@@ -23,10 +23,10 @@ const Contact = ({ contactId }) => {
     //if (loading) return <Loading />;
     if (error) return <p>ERROR: {error.message}</p>;
     if (!data) return <p>Not found</p>;
-  
+
     return (
       <Fragment>
-        <ContactTile {...data.contact} />
+        <ContactDetails {...data} />
       </Fragment>
     );
   };

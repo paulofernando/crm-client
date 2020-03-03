@@ -1,9 +1,6 @@
 import React from 'react';
 
 class ContactDetails extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div key={this.props.contact.id}>
