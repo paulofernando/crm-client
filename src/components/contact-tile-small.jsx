@@ -1,5 +1,5 @@
 import React from 'react';
-import './Style.css';
+import './style.css';
 
 class ContactTileSmall extends React.Component {    
     render() {

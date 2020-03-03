@@ -1,7 +1,7 @@
 import React from 'react';
-import './Style.css';
+import './style.css';
 
-import ContactTileSmall from "../components/ContactTileSmall";
+import ContactTileSmall from "./contact-tile-small";
 import NumberFormat from 'react-number-format';
 
 class CourtCaseTile extends React.Component {
