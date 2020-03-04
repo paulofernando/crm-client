@@ -13,7 +13,12 @@ const createContactMutation = gql`
 const ContactFormContainer = props => {
   const [mutate] = useMutation(createContactMutation)
 
+  console.log("submit")
+
   async function submit(values) {
+
+    console.log("submit")
+
     const { data } = await mutate({
       variables: values
     })
