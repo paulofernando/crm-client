@@ -21,6 +21,9 @@ export default function Pages() {
         <Contacts path="/contacts" />
         <Contact path="/contact/:contactId" />
         <CreateContactForm path="/contact/create"/>
+        <ContactFormContainer  path="/case/create">
+          {({ submit, onFinish }) => <CreateContactForm submit={submit} onFinish={onFinish} />}
+        </ContactFormContainer>
         <CreateCourtCaseForm path="/case/create"/>
       </Router>
     </Fragment>

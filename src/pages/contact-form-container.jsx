@@ -18,7 +18,7 @@ const ContactFormContainer = props => {
       variables: values
     })
     if (data) {
-      return data.signup
+      return data.contact
     }
     return null
   }

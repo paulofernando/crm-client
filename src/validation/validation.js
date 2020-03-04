@@ -21,5 +21,8 @@ export const validContactSchema = yup.object().shape({
         .string()
         .min(3, nameNotLongEnough)
         .max(20, nameTooLong)
+        .required(fieldRequired),
+    caseId: yup
+        .number()
         .required(fieldRequired)
 })
