@@ -1,60 +1,161 @@
-import React from 'react'
-import { withFormik } from 'formik'
-import '../App.css'
+import React from "react";
+import { Form } from "react-bootstrap";
+import { Formik } from "formik";
+import gql from "graphql-tag";
+import { Mutation } from "@apollo/react-components";
 
-import { validContactSchema } from '../validation/validation'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
+import { validCourtCaseSchema } from "../validation/validation";
+import { CONTAINER, FORM, BUTTON } from "../components/style";
 
-const InnerForm = props => {
-    const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit } = props
+const CREATE_COURT_CASE = gql`
+  mutation CreateCourtCase(
+    $title: String!
+    $description: String!
+    $value: Float!
+    $courtDate: String!
+  ) {
+    createCourtCase(
+      input: {
+        title: $title
+        description: $description
+        value: $value
+        courtDate: $courtDate
+      }
+    ) {
+      courtCase {
+        id
+        title
+        description
+        value
+        courtDate
+      }
+      errors
+    }
+  }
+`;
 
-    return (
-        <Form className="contactForm" onSubmit={handleSubmit}>
-            <Form.Label>Title</Form.Label>
-            <Form.Control className="formField" type="input"/>
+const CreateCourtCaseForm = () => {
+  return (
+    <CONTAINER>
+      <Mutation mutation={CREATE_COURT_CASE}>
+        {(createCourtCase, { data }) => (
+          <div>
+            <Formik
+              initialValues={{
+                title: "",
+                description: "",
+                value: "",
+                courtDate: ""
+              }}
+              validationSchema={validCourtCaseSchema}
+              onSubmit={(values, { setSubmitting, resetForm }) => {
+                createCourtCase({
+                  variables: {
+                    title: values.title,
+                    description: values.description,
+                    value: parseFloat(values.value),
+                    courtDate: values.courtDate
+                  }
+                })
+                  .then(res => console.log(res))
+                  .catch(err => console.log("ERROR: " + err));
+                setSubmitting(true);
+                resetForm();
+              }}
+            >
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting
+              }) => (
+                <FORM onSubmit={handleSubmit} className="mx-auto">
+                  <Form.Group controlId="formTitle">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.title}
+                      className={touched.title && errors.title ? "error" : null}
+                    />
+                    {touched.title && errors.title ? (
+                      <div className="error-message">{errors.title}</div>
+                    ) : null}
+                  </Form.Group>
+                  <Form.Group controlId="formLastName">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="description"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.description}
+                      className={
+                        touched.description && errors.description
+                          ? "error"
+                          : null
+                      }
+                    />
+                    {touched.description && errors.description ? (
+                      <div className="error-message">{errors.description}</div>
+                    ) : null}
+                  </Form.Group>
+                  <Form.Group controlId="formEmail">
+                    <Form.Label>Value</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="value"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.value}
+                      className={touched.value && errors.value ? "error" : null}
+                    />
+                    {touched.value && errors.value ? (
+                      <div className="error-message">{errors.value}</div>
+                    ) : null}
+                  </Form.Group>
+                  <Form.Group controlId="formCourtDate">
+                    <Form.Label>Court Date</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="courtDate"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.courtDate}
+                      className={
+                        touched.courtDate && errors.courtDate ? "error" : null
+                      }
+                    />
+                    {touched.courtDate && errors.courtDate ? (
+                      <div className="error-message">{errors.courtDate}</div>
+                    ) : null}
+                  </Form.Group>
 
-            <Form.Label>Description</Form.Label>
-            <Form.Control className="formField" type="textarea"/>
+                  <div className="formButtonContainer">
+                    <BUTTON
+                      type="submit"
+                      disabled={isSubmitting}
+                      variant="primary"
+                    >
+                      Create Case
+                    </BUTTON>
+                    <BUTTON disabled={isSubmitting} variant="secondary">
+                      Reset
+                    </BUTTON>
+                  </div>
+                </FORM>
+              )}
+            </Formik>
+          </div>
+        )}
+      </Mutation>
+    </CONTAINER>
+  );
+};
 
-            <Form.Label>Value</Form.Label>
-            <Form.Control className="formField formSmallInput" type="input"/>
-
-            <Form.Label>Court date</Form.Label>            
-            <Form.Control className="formField formSmallInput" type="input"/>
-
-            <div className="formButtonContainer">
-                <Button className="formButton" type='submit' disabled={isSubmitting} variant="primary">
-                    Create Case
-                </Button>
-                <Button className="formButton" disabled={isSubmitting} variant="secondary">
-                    Reset
-                </Button>
-            </div>
-        </Form>
-    )
-}
-
-const CreateCourtCaseForm = withFormik({
-    mapPropsToValues: () => ({ firstName: '', lastName: '', caseRole: '', email: '', courtCaseId: '' }),
-
-    validationSchema: validContactSchema,
-
-    handleSubmit: async (values, { props, setErrors, setSubmitting }) => {
-        console.log("HandleSubmit")
-        //const [mutate] = useMutation(createContactMutation)
-        const errors = await props.submit(values)
-        if (errors) {
-            //setErrors(normalizeErrors(errors))
-        } else {
-            props.onFinish()
-        }
-        setSubmitting(false)
-    },
-
-    displayName: 'CreateCourtCaseForm'
-})(InnerForm)
-
-export default CreateCourtCaseForm
+export default CreateCourtCaseForm;

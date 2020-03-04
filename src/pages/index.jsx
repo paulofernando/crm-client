@@ -7,7 +7,6 @@ import Contact from './contact';
 import Contacts from './contacts';
 import CourtCases from './court-cases';
 import Dashboard from './dashboard';
-import ContactFormContainer from './contact-form-container';
 import CreateCourtCaseForm from './case-form';
 import CreateContactForm from './contact-form';
 //import { Footer, PageContainer } from '../components/';
