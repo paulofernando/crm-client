@@ -38,6 +38,7 @@ const CourtCases = () => {
   
     return (
       <Fragment>
+        <h2 style={{textAlign: 'center'}}>List of Cases</h2>
         <div className="courtCaseContainer">          
             {data.courtCases &&
               data.courtCases.map(courtCase => (                

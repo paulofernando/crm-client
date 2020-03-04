@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Form, Button, ToggleButton } from 'react-bootstrap';
 
 export const CONTAINER = styled.div`
-  background: #FCFCFC;
+  background: #352f64;
   width: 500px;
   margin: 0 auto;
   margin-top: 1em;
@@ -12,7 +12,7 @@ export const CONTAINER = styled.div`
   }
 
   label {
-    color: #8063e1;
+    color: white;
     font-size: 1.2em;
     font-weight: 400;
   }

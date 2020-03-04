@@ -10,7 +10,6 @@ body {
     color: white;
     margin: 30px;
     width: 280px;
-    height: 140px;
 
     font-family: Avenir, sans-serif;
     -ms-text-size-adjust: 100%;
@@ -29,7 +28,7 @@ body {
 
 .contactCard > div, .smallContactCard > div {
     border-style: solid;
-    border-color: white;
+    border-color: #cccccc;
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
@@ -37,7 +36,7 @@ body {
 .contactCard > div {
     padding: 10px;
     border-radius: 12px;
-    border-width: 3px;
+    border-width: 2px;
 }
 
 .smallContactCard > div {
@@ -81,14 +80,21 @@ div.prosecutor {
     transform: scale(1.1);
 }
 
-.contactCard h3 {
-    font-size: 18px;
-    font-weight: 800;
-}
-
-.contactCard span {
+.contactEmail {
     font-weight: 500;
     opacity: 0.8;
+    font-style: italic;
+}
+
+.contactCaseId {
+    color: white;
+    text-decoration: underline;
+}
+
+.contactCaseRole {
+    text-align: center;
+    width: 100%;
+    font-size: small;
 }
 
 .cardContainer {
@@ -99,7 +105,10 @@ div.prosecutor {
 }
 
 .courtCaseCard {
-    margin-bottom: 60px;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: #352f64;
+    border-radius: 6px;
 }
 
 .courtCaseValue {

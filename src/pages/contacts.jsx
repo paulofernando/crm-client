@@ -39,6 +39,7 @@ const Contacts = () => {
   
     return (
       <Fragment>
+        <h2 style={{textAlign: 'center'}}>List of Contacts</h2>
         <div className="cardContainer">          
             {data.contacts &&
               data.contacts.map(contact => (                

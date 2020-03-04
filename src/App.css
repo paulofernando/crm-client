@@ -45,13 +45,13 @@
 }
 
 .dashboardButton {
-  background-color: blanchedalmond;
+  background-color:#9cb0ff;
   width: 100px;
   border-radius: 12px;
   padding: 20px;
   margin: 50px;   
   border-style: solid;
-  border-color: white;
+  border-color: rgb(202, 202, 202);
   color: black;  
   text-align: center;
   vertical-align: middle;
