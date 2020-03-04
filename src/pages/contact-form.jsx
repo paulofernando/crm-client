@@ -15,26 +15,28 @@ const CREATE_CONTACT = gql`
     $email: String!
     $courtCaseId: [ID]!
   ) {
-    createContact(input: {
-        firstName: $firstName,
-        lastName: $lastName,
-        caseRole: $caseRole,
-        email: $email,
+    createContact(
+      input: {
+        firstName: $firstName
+        lastName: $lastName
+        caseRole: $caseRole
+        email: $email
         courtCaseId: $courtCaseId
-      }) {
-        contact {
-          id,
-          firstName,
-          lastName,
-          caseRole,
-          email
-        }
-        errors
       }
+    ) {
+      contact {
+        id
+        firstName
+        lastName
+        caseRole
+        email
+      }
+      errors
+    }
   }
 `;
 
-const CreateContactForm = (submit, onFinish) => {
+const CreateContactForm = () => {
   return (
     <CONTAINER>
       <Mutation mutation={CREATE_CONTACT}>
@@ -42,25 +44,27 @@ const CreateContactForm = (submit, onFinish) => {
           <div>
             <Formik
               initialValues={{
-                firstName: '',
-                lastName: '',
-                caseRole: 'Accused',
-                email: '',
-                caseId: ''
+                firstName: "",
+                lastName: "",
+                caseRole: "Accused",
+                email: "",
+                caseId: ""
               }}
               validationSchema={validContactSchema}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 createContact({
-                    variables: {
-                        firstName: values.firstName,
-                        lastName: values.lastName,
-                        caseRole: values.caseRole,
-                        email: values.email,
-                        courtCaseId: parseInt(values.caseId)
-                    }
-                }).then(res => console.log(res))
-                .catch(err => console.log("ERROR: " + err));
+                  variables: {
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    caseRole: values.caseRole,
+                    email: values.email,
+                    courtCaseId: parseInt(values.caseId)
+                  }
+                })
+                  .then(res => console.log(res))
+                  .catch(err => console.log("ERROR: " + err));
                 setSubmitting(false);
+                resetForm();
               }}
             >
               {({

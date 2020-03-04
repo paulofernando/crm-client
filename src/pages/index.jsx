@@ -7,7 +7,6 @@ import Contact from './contact';
 import Contacts from './contacts';
 import CourtCases from './court-cases';
 import Dashboard from './dashboard';
-import ContactFormContainer from './contact-form-container';
 import CreateCourtCaseForm from './case-form';
 import CreateContactForm from './contact-form';
 //import { Footer, PageContainer } from '../components/';
@@ -21,9 +20,6 @@ export default function Pages() {
         <Contacts path="/contacts" />
         <Contact path="/contact/:contactId" />
         <CreateContactForm path="/contact/create"/>
-        <ContactFormContainer  path="/case/create">
-          {({ submit, onFinish }) => <CreateContactForm submit={submit} onFinish={onFinish} />}
-        </ContactFormContainer>
         <CreateCourtCaseForm path="/case/create"/>
       </Router>
     </Fragment>
