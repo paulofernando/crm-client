@@ -13,13 +13,14 @@ const CREATE_CONTACT = gql`
     $lastName: String!
     $caseRole: [Role]!
     $email: String!
+    $courtCaseId: [ID]!
   ) {
     createContact(input: {
         firstName: $firstName,
         lastName: $lastName,
         caseRole: $caseRole,
         email: $email,
-        courtCaseId: 12
+        courtCaseId: $courtCaseId
       }) {
         contact {
           id,
@@ -41,11 +42,11 @@ const CreateContactForm = (submit, onFinish) => {
           <div>
             <Formik
               initialValues={{
-                firstName: 'Abc',
-                lastName: 'Def',
+                firstName: '',
+                lastName: '',
                 caseRole: 'Accused',
-                email: 'a@a.com',
-                caseId: 12
+                email: '',
+                caseId: ''
               }}
               validationSchema={validContactSchema}
               onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -55,7 +56,7 @@ const CreateContactForm = (submit, onFinish) => {
                         lastName: values.lastName,
                         caseRole: values.caseRole,
                         email: values.email,
-                        caseId: parseInt(values.caseId)
+                        courtCaseId: parseInt(values.caseId)
                     }
                 }).then(res => console.log(res))
                 .catch(err => console.log("ERROR: " + err));
