@@ -155,3 +155,7 @@ div.prosecutor {
     align-items: center;
     justify-content: center;
 }
+
+.headerTitle {
+    text-align: center;
+}

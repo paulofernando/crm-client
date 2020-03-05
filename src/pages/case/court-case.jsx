@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import CourtCaseDetails from "../../components/case/court-case-details";
+import Header from "../../components/header";
 
 import { COURT_CASE_TILE_DATA } from "./court-cases";
 
@@ -26,6 +27,7 @@ const CourtCase = ({ courtCaseId }) => {
 
     return (
       <Fragment>
+        <Header title={"Case"}/> 
         <CourtCaseDetails {...data} />
       </Fragment>
     );

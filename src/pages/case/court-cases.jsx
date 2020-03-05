@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import '../../App.css';
 
 import CourtCaseTile from "../../components/case/court-case-tile";
+import Header from "../../components/header";
 
 export const COURT_CASE_TILE_DATA = gql`
   fragment CourtCaseTile on CourtCase {
@@ -40,7 +41,7 @@ const CourtCases = () => {
   
     return (
       <Fragment>
-        <h2 className="title">List of Cases</h2>
+        <Header title={"List of Cases"}/>        
         <div className="courtCaseContainer">          
             {data.courtCases &&
               data.courtCases.map(courtCase => (                

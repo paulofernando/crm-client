@@ -5,8 +5,10 @@ import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import '../../App.css';
 
-import { validCourtCaseSchema } from "../../validation";
 import { CONTAINER, FORM, BUTTON } from "../../components/style";
+import Header from "../../components/header";
+
+import { validCourtCaseSchema } from "../../validation";
 
 const CREATE_COURT_CASE = gql`
   mutation CreateCourtCase(
@@ -38,7 +40,7 @@ const CREATE_COURT_CASE = gql`
 const CreateCourtCaseForm = () => {
   return (
     <div>
-      <h2 className="title">Create Case</h2>
+      <Header title={"Create Case"}/> 
       <CONTAINER>
         <Mutation mutation={CREATE_COURT_CASE}>
           {(createCourtCase, { data }) => (

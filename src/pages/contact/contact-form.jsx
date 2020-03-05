@@ -5,8 +5,10 @@ import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import '../../App.css';
 
-import { validContactSchema } from "../../validation";
 import { CONTAINER, FORM, BUTTON, TOGGLE } from "../../components/style";
+import Header from "../../components/header";
+
+import { validContactSchema } from "../../validation";
 
 const CREATE_CONTACT = gql`
   mutation CreateContact(
@@ -40,7 +42,7 @@ const CREATE_CONTACT = gql`
 const CreateContactForm = () => {
   return (
     <div>
-      <h2 className="title">Create Contact</h2>
+      <Header title={"Create Contact"}/> 
       <CONTAINER>      
         <Mutation mutation={CREATE_CONTACT}>
           {(createContact, { data }) => (
