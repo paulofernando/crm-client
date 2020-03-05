@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import './style.css';
+import '../style.css';
 
 class ContactTile extends React.Component {
     render() {

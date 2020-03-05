@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import CourtCaseDetails from "../components/court-case-details";
+import CourtCaseDetails from "../../components/case/court-case-details";
 
 import { COURT_CASE_TILE_DATA } from "./court-cases";
 

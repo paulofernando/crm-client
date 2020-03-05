@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import '../../App.css';
 
-import CourtCaseTile from "../components/court-case-tile";
+import CourtCaseTile from "../../components/case/court-case-tile";
 
 export const COURT_CASE_TILE_DATA = gql`
   fragment CourtCaseTile on CourtCase {
@@ -39,7 +40,7 @@ const CourtCases = () => {
   
     return (
       <Fragment>
-        <h2 style={{textAlign: 'center'}}>List of Cases</h2>
+        <h2 className="title">List of Cases</h2>
         <div className="courtCaseContainer">          
             {data.courtCases &&
               data.courtCases.map(courtCase => (                

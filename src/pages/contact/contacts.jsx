@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import '../../App.css';
 
-import ContactTile from "../components/contact-details";
+import ContactTile from "../../components/contact/contact-details";
 
 export const CONTACT_TILE_DATA = gql`
   fragment ContactTile on Contact {
@@ -39,7 +40,7 @@ const Contacts = () => {
   
     return (
       <Fragment>
-        <h2 style={{textAlign: 'center'}}>List of Contacts</h2>
+        <h2 className="title">List of Contacts</h2>
         <div className="cardContainer">          
             {data.contacts &&
               data.contacts.map(contact => (                

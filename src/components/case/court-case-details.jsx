@@ -1,15 +1,15 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import Moment from 'react-moment';
-import './style.css';
+import '../style.css';
 
-import ContactTile from "./contact-details";
+import ContactTile from "../contact/contact-details";
 
 class CourtCaseDetails extends React.Component {
     render() {
         return (
             <div className="courtCaseCard courtCaseDetailed">
-                <h3>{this.props.courtCase.title}</h3>
+                <h3 className="courtCaseTitle">{this.props.courtCase.title}</h3>
                 <p>{this.props.courtCase.description}</p>
                 <div className="cardContainer">
                     {this.props.courtCase.contacts &&

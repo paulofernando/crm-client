@@ -56,12 +56,6 @@ div.accused {
     box-shadow: 5px 5px 5px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
 }
 
-div.accused {
-    background-color: #8063e1;
-    background-image: linear-gradient(135deg, #bd7be8, #8063e1);
-    box-shadow: 5px 5px 5px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
-}
-
 div.judge {    
     background-color: #3f58e3;
     background-image: linear-gradient(135deg, #7f94fc, #3f58e3);
@@ -109,22 +103,24 @@ div.prosecutor {
     padding: 1em;
     background-color: #352f64;
     border-radius: 10px;    
-    width: 30%;
+    width: 30%;    
 }
 
 .courtCaseDetailed {
     width: 100%;
 }
 
-.courtCaseCard > h3 {
-    text-align: center;
-    margin-bottom: 1.5em;    
-}
-
 .courtCaseCard > Link {
     cursor: pointer;
 }
 
+.courtCaseTitle {
+    text-align: center;
+}
+
+.courtCaseDescription {    
+    opacity: .9;
+}
 .courtCaseValue {
     float: right;
     color: black;

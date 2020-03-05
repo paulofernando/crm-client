@@ -88,3 +88,13 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.formButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+}

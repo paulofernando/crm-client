@@ -3,13 +3,13 @@ import { Router } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Contact from './contact';
-import Contacts from './contacts';
-import CourtCase from './court-case';
-import CourtCases from './court-cases';
+import Contact from './contact/contact';
+import Contacts from './contact/contacts';
+import CourtCase from './case/court-case';
+import CourtCases from './case/court-cases';
 import Dashboard from './dashboard';
-import CreateCourtCaseForm from './court-case-form';
-import CreateContactForm from './contact-form';
+import CreateCourtCaseForm from './case/court-case-form';
+import CreateContactForm from './contact/contact-form';
 //import { Footer, PageContainer } from '../components/';
 
 export default function Pages() {

@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import Moment from 'react-moment';
-import './style.css';
+import '../style.css';
 
-import ContactTileSmall from "./contact-tile";
+import ContactTileSmall from "../contact/contact-tile";
 
 class CourtCaseTile extends React.Component {
     render() {
         return (
             <div className="courtCaseCard">
-                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/case/${this.props.courtCase.id}`}>
-                    <h3>{this.props.courtCase.title}</h3>
+                <Link style={{ color: 'white' }} to={`/case/${this.props.courtCase.id}`}>
+                    <h3 className="courtCaseTitle">{this.props.courtCase.title}</h3>
                 </Link>
-                <p className="truncate">{this.props.courtCase.description}</p>
+                <p className="truncate courtCaseDescription">{this.props.courtCase.description}</p>
                 <div className="cardContainer">
                     {this.props.courtCase.contacts &&
                         this.props.courtCase.contacts.map(contact => (

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import ContactDetails from "../components/contact-details";
+import ContactDetails from "../../components/contact/contact-details";
 
 import { CONTACT_TILE_DATA } from "./contacts";
 
