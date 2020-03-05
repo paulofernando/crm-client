@@ -3,14 +3,14 @@ import '../App.css'
 
 import { Link } from '@reach/router';
 
-const Dashboard = () => {    
+const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboardGroup">
                 <h3>Court Cases</h3>
-                <div className="dashboardRow">                
+                <div className="dashboardRow">
                     <Link className="dashboardButton" to={`/cases`}>List</Link>
-                    <Link className="dashboardButton" to={`/case/create`}>Create</Link>                    
+                    <Link className="dashboardButton" to={`/case/create`}>Create</Link>
                 </div>
             </div>
             <div className="dashboardGroup">
@@ -22,6 +22,6 @@ const Dashboard = () => {
             </div>
         </div>
     );
-  };
-  
-  export default Dashboard;
+};
+
+export default Dashboard;

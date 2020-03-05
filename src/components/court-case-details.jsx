@@ -8,7 +8,7 @@ import ContactTile from "./contact-details";
 class CourtCaseDetails extends React.Component {
     render() {
         return (
-            <div className="courtCaseCard courtCaseDetailed">                
+            <div className="courtCaseCard courtCaseDetailed">
                 <h3>{this.props.courtCase.title}</h3>
                 <p>{this.props.courtCase.description}</p>
                 <div className="cardContainer">

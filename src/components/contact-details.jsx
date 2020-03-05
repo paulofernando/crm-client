@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from '@reach/router';
 import './style.css';
 
-class ContactDetails extends React.Component {    
+class ContactDetails extends React.Component {
     render() {
-        return (            
+        return (
             <div className="contactCard">
-                <div className={`${ this.props.contact.caseRole.toLowerCase() }`}>
+                <div className={`${this.props.contact.caseRole.toLowerCase()}`}>
                     <h3>{this.props.contact.firstName} {this.props.contact.lastName}</h3>
                     <div className="contactEmail">{this.props.contact.email}</div>
                     {this.props.contact.courtCase &&
