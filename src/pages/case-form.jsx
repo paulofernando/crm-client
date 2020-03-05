@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
@@ -90,7 +90,7 @@ const CreateCourtCaseForm = () => {
                   <Form.Group controlId="formLastName">
                     <Form.Label>Description</Form.Label>
                     <Form.Control
-                      type="text"
+                      as="textarea"
                       name="description"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -105,25 +105,35 @@ const CreateCourtCaseForm = () => {
                       <div className="error-message">{errors.description}</div>
                     ) : null}
                   </Form.Group>
-                  <Form.Group controlId="formEmail">
+                  <Form.Group style={{width:'50%'}} controlId="formEmail">
                     <Form.Label>Value</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="value"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.value}
-                      className={touched.value && errors.value ? "error" : null}
-                    />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                        type="text"
+                        name="value"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.value}
+                        className={touched.value && errors.value ? "error" : null}                        
+                        style={{textAlign: "right"}}
+                        />
+                        <InputGroup.Append>
+                            <InputGroup.Text>.00</InputGroup.Text>
+                        </InputGroup.Append>
+                    </InputGroup>
                     {touched.value && errors.value ? (
                       <div className="error-message">{errors.value}</div>
                     ) : null}
                   </Form.Group>
-                  <Form.Group controlId="formCourtDate">
+                  <Form.Group style={{width:'50%'}} controlId="formCourtDate">
                     <Form.Label>Court Date</Form.Label>
                     <Form.Control
                       type="text"
                       name="courtDate"
+                      placeholder="01-30-2020"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.courtDate}
