@@ -6,6 +6,7 @@ import CourtCaseTile from "../components/court-case-tile";
 
 export const COURT_CASE_TILE_DATA = gql`
   fragment CourtCaseTile on CourtCase {
+    id
     title
     description
     courtDate

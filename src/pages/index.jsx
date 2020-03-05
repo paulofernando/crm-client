@@ -5,9 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Contact from './contact';
 import Contacts from './contacts';
+import CourtCase from './court-case';
 import CourtCases from './court-cases';
 import Dashboard from './dashboard';
-import CreateCourtCaseForm from './case-form';
+import CreateCourtCaseForm from './court-case-form';
 import CreateContactForm from './contact-form';
 //import { Footer, PageContainer } from '../components/';
 
@@ -17,8 +18,9 @@ export default function Pages() {
       <Router primary={false} component={Fragment}>
         <Dashboard path="/" />
         <CourtCases path="/cases" />
+        <CourtCase path="/case/:courtCaseId" />
         <Contacts path="/contacts" />
-        <Contact path="/contact/:contactId" />
+        <Contact path="/contact/:contactId" />        
         <CreateContactForm path="/contact/create"/>
         <CreateCourtCaseForm path="/case/create"/>
       </Router>

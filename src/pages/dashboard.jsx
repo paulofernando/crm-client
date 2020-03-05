@@ -3,25 +3,22 @@ import '../App.css'
 
 import { Link } from '@reach/router';
 
-import SVGIcon from "../components/svg-icon";
-
 const Dashboard = () => {    
     return (
         <div className="dashboard">
-            <div className="dashboardRow">
-                <SVGIcon className="dashboardIcon" name="list" width={36} />
-                <Link className="dashboardButton" to={`/cases`}>Cases</Link>
-                <Link className="dashboardButton" to={`/contacts`}>Contacts</Link>
+            <div className="dashboardGroup">
+                <h3>Court Cases</h3>
+                <div className="dashboardRow">                
+                    <Link className="dashboardButton" to={`/cases`}>List</Link>
+                    <Link className="dashboardButton" to={`/case/create`}>Create</Link>                    
+                </div>
             </div>
-            <div className="dashboardRow">
-                <SVGIcon className="dashboardIcon" name="create" width={36} />
-                <Link className="dashboardButton" to={`/case/create`}>Case</Link>
-                <Link className="dashboardButton" to={`/contact/create`}>Contact</Link>
-            </div>            
-            <div className="dashboardRow">
-                <SVGIcon className="dashboardIcon" name="search" width={36} />
-                <Link className="dashboardButton" to={``}>Search Contacts</Link>
-                <Link className="dashboardButton" to={``}>Search Contacts</Link>
+            <div className="dashboardGroup">
+                <h3>Contacts</h3>
+                <div className="dashboardRow">
+                    <Link className="dashboardButton" to={`/contacts`}>List</Link>
+                    <Link className="dashboardButton" to={`/contact/create`}>Create</Link>
+                </div>
             </div>
         </div>
     );

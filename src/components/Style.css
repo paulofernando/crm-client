@@ -1,9 +1,12 @@
 body {
+    background-color: #282c34;
     color: white;
     padding-left: 10%;
     padding-right: 10%;
     font-family: Arial;
 }
+
+/* ----------- Contact ----------- */
 
 .contactCard {
     color: white;
@@ -21,7 +24,6 @@ body {
 .smallContactCard {
     color: white;
     margin: 10px;
-    width: 80px;
     height: 40px;
 }
 
@@ -96,18 +98,23 @@ div.prosecutor {
     font-size: small;
 }
 
-.cardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
+/* ----------- Court Case ----------- */
 
 .courtCaseCard {
     margin-bottom: 2em;
     padding: 1em;
     background-color: #352f64;
-    border-radius: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.courtCaseCard > h3 {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.courtCaseCard:hover {    
+    background-color: #49418a;
 }
 
 .courtCaseValue {
@@ -118,4 +125,23 @@ div.prosecutor {
     padding: 3px;
     font-size: small;
     opacity: .9;
+}
+
+.courtCaseDate {
+    float: right;
+    color: black;
+    background-color: limegreen;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: small;
+    opacity: .9;
+}
+
+/* -------------------------------- */
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
