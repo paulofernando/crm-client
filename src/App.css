@@ -83,3 +83,8 @@
   text-decoration: none;   
   cursor: pointer;
 }
+
+.courtCaseContainer {
+  display: flex;
+  flex-wrap: wrap;
+}

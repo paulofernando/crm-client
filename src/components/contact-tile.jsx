@@ -1,23 +1,17 @@
 import React from 'react';
-import './style.css';
-
 import { Link } from '@reach/router';
+import './style.css';
 
 class ContactTile extends React.Component {    
     render() {
-        return (            
-            <div className="contactCard">
-                <div className={`${ this.props.contact.caseRole.toLowerCase() }`}>
-                    <h3>{this.props.contact.firstName} {this.props.contact.lastName}</h3>
-                    <div className="contactEmail">{this.props.contact.email}</div>
-                    {this.props.contact.courtCase &&
-                        <Link className="contactCaseId" to={`/case/${this.props.contact.courtCase.id}`}>
-                            Case #{this.props.contact.courtCase.id}
-                        </Link>
-                    }
-                    <div className="contactCaseRole">{this.props.contact.caseRole}</div>
+        return (
+            <Link style={{ textDecoration: 'none' }} to={`/contact/${this.props.contact.id}`}>
+                <div className="smallContactCard">
+                    <div className={`${ this.props.contact.caseRole.toLowerCase() }`}>
+                        {this.props.contact.firstName}
+                    </div>                
                 </div>
-            </div>
+            </Link>
         );
     }
 }

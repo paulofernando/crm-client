@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import ContactTile from "../components/contact-tile";
+import ContactTile from "../components/contact-details";
 
 export const CONTACT_TILE_DATA = gql`
   fragment ContactTile on Contact {

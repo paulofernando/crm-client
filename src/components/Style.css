@@ -23,6 +23,7 @@ body {
 
 .smallContactCard {
     color: white;
+    font-size: small;
     margin: 10px;
     height: 40px;
 }
@@ -101,12 +102,23 @@ div.prosecutor {
 /* ----------- Court Case ----------- */
 
 .courtCaseCard {
-    margin-bottom: 2em;
+    margin: 1em;
     padding: 1em;
     background-color: #352f64;
     border-radius: 10px;
     cursor: pointer;
+    width: 30%;
 }
+
+.courtCaseDetailed {
+    width: 100%;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 .courtCaseCard > h3 {
     text-align: center;

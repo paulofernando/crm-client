@@ -1,12 +1,21 @@
 import React from 'react';
+import { Link } from '@reach/router';
+import './style.css';
 
-class ContactDetails extends React.Component {
+class ContactDetails extends React.Component {    
     render() {
-        return (
-            <div key={this.props.contact.id}>
-                <p>{this.props.contact.lastName}</p>
-                <p>{this.props.contact.caseRole}</p>
-                <p>{this.props.contact.email}</p>
+        return (            
+            <div className="contactCard">
+                <div className={`${ this.props.contact.caseRole.toLowerCase() }`}>
+                    <h3>{this.props.contact.firstName} {this.props.contact.lastName}</h3>
+                    <div className="contactEmail">{this.props.contact.email}</div>
+                    {this.props.contact.courtCase &&
+                        <Link className="contactCaseId" to={`/case/${this.props.contact.courtCase.id}`}>
+                            Case #{this.props.contact.courtCase.id}
+                        </Link>
+                    }
+                    <div className="contactCaseRole">{this.props.contact.caseRole}</div>
+                </div>
             </div>
         );
     }
