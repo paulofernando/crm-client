@@ -9,7 +9,7 @@ class CourtCaseTile extends React.Component {
     render() {
         return (
             <div className="courtCaseCard">
-                <Link style={{ textDecoration: 'none' }} to={`/case/${this.props.courtCase.id}`}>
+                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/case/${this.props.courtCase.id}`}>
                     <h3>{this.props.courtCase.title}</h3>
                 </Link>
                 <p className="truncate">{this.props.courtCase.description}</p>

@@ -31,6 +31,9 @@ body {
 .contactCard > div, .smallContactCard > div {
     border-style: solid;
     border-color: #cccccc;
+}
+
+.smallContactCard > div {
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
@@ -77,7 +80,7 @@ div.prosecutor {
     box-shadow: 5px 5px 5px rgba(34,50,84,0.1), 1px 1px 0px 1px #352f64;
 }
 
-.contactCard > div:hover, .smallContactCard > div:hover {
+.smallContactCard > div:hover {
     border-color: darkorange;
     transform: scale(1.1);
 }
@@ -105,8 +108,7 @@ div.prosecutor {
     margin: 1em;
     padding: 1em;
     background-color: #352f64;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 10px;    
     width: 30%;
 }
 
@@ -114,19 +116,13 @@ div.prosecutor {
     width: 100%;
 }
 
-.truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
 .courtCaseCard > h3 {
     text-align: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5em;    
 }
 
-.courtCaseCard:hover {    
-    background-color: #49418a;
+.courtCaseCard > Link {
+    cursor: pointer;
 }
 
 .courtCaseValue {
@@ -148,6 +144,12 @@ div.prosecutor {
     font-size: small;
     opacity: .9;
 }
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 /* -------------------------------- */
 
