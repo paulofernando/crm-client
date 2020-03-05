@@ -13,8 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App-header {  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,7 +38,26 @@
 
 .dashboard {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: #352f64;
+  padding: 1em;
+  margin: 1em;
+}
+
+.dashboardIcon {    
+  margin-left: 2em;
+  margin-right: 2em;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
