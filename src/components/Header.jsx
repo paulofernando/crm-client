@@ -10,7 +10,7 @@ class Header extends React.Component {
             <Row className="header">
                 <Col>
                     <Link to="/">
-                        <SVGIcon name="logo" width="30" />
+                        <SVGIcon name="logo" width="24" />
                     </Link>
                 </Col>
                 <Col><h4 className="headerTitle">{this.props.title}</h4></Col>

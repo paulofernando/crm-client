@@ -53,10 +53,6 @@ export const BUTTON = styled(Button)`
   margin: 20px;
 `;
 
-export const TOGGLE = styled(ToggleButton)`    
-  font-size: 1.2em;
-`;
-
 export const HEADER = styled(Header)`    
   font-size: 1.2em;
   background-color: #3f58e3;

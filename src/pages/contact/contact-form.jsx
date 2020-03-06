@@ -1,11 +1,16 @@
 import React from "react";
-import { Form, ToggleButtonGroup } from "react-bootstrap";
+import {
+  Form,
+  ToggleButtonGroup,
+  ToggleButton,
+  ButtonToolbar
+} from "react-bootstrap";
 import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
-import '../../App.css';
+import "../../App.css";
 
-import { CONTAINER, FORM, BUTTON, TOGGLE } from "../../components/style";
+import { CONTAINER, FORM, BUTTON } from "../../components/style";
 import Header from "../../components/header";
 
 import { validContactSchema } from "../../validation";
@@ -40,23 +45,31 @@ const CREATE_CONTACT = gql`
 `;
 
 const CreateContactForm = () => {
+  let formValues = {
+    firstName: "",
+    lastName: "",
+    caseRole: "",
+    email: "",
+    caseId: ""
+  }
+
+  const [caseRole, setCaseRole] = React.useState();
+  const handleCaseRoleChange = (selectedValue) => {
+    console.log(selectedValue)
+    formValues.caseRole = selectedValue
+  }  
   return (
     <div>
-      <Header title={"Create Contact"}/> 
-      <CONTAINER>      
+      <Header title={"Create Contact"} />
+      <CONTAINER>
         <Mutation mutation={CREATE_CONTACT}>
           {(createContact, { data }) => (
             <div>
               <Formik
-                initialValues={{
-                  firstName: "",
-                  lastName: "",
-                  caseRole: "Accused",
-                  email: "",
-                  caseId: ""
-                }}
+                initialValues={formValues}
                 validationSchema={validContactSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
+                  console.log(values)
                   createContact({
                     variables: {
                       firstName: values.firstName,
@@ -79,7 +92,8 @@ const CreateContactForm = () => {
                   handleChange,
                   handleBlur,
                   handleSubmit,
-                  isSubmitting
+                  isSubmitting,
+                  resetForm
                 }) => (
                   <FORM onSubmit={handleSubmit} className="mx-auto">
                     <Form.Group controlId="formFirstName">
@@ -123,7 +137,9 @@ const CreateContactForm = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.email}
-                        className={touched.email && errors.email ? "error" : null}
+                        className={
+                          touched.email && errors.email ? "error" : null
+                        }
                       />
                       {touched.email && errors.email ? (
                         <div className="error-message">{errors.email}</div>
@@ -131,20 +147,36 @@ const CreateContactForm = () => {
                     </Form.Group>
                     <Form.Group controlId="formEmail">
                       <Form.Label>Court Role</Form.Label>
-                      <ToggleButtonGroup type="checkbox" value={values.caseRole}>
-                        <TOGGLE variant="outline-primary" value={"Accused"}>
-                          Accused
-                        </TOGGLE>
-                        <TOGGLE variant="outline-primary" value={"Barrister"}>
-                          Barrister
-                        </TOGGLE>
-                        <TOGGLE variant="outline-primary" value={"Judge"}>
-                          Judge
-                        </TOGGLE>
-                        <TOGGLE variant="outline-primary" value={"Prosecutor"}>
-                          Prosecutor
-                        </TOGGLE>
-                      </ToggleButtonGroup>
+                        <ToggleButtonGroup
+                          type="radio"
+                          name="caseRole"
+                          onChange={handleCaseRoleChange}
+                        >
+                          <ToggleButton
+                            variant="outline-primary"
+                            value={"Accused"}
+                          >
+                            Accused
+                          </ToggleButton>
+                          <ToggleButton
+                            variant="outline-primary"
+                            value={"Barrister"}
+                          >
+                            Barrister
+                          </ToggleButton>
+                          <ToggleButton
+                            variant="outline-primary"
+                            value={"Judge"}
+                          >
+                            Judge
+                          </ToggleButton>
+                          <ToggleButton
+                            variant="outline-primary"
+                            value={"Prosecutor"}
+                          >
+                            Prosecutor
+                          </ToggleButton>
+                        </ToggleButtonGroup>
                     </Form.Group>
 
                     <Form.Group controlId="formCourtCaseId">
@@ -172,7 +204,11 @@ const CreateContactForm = () => {
                       >
                         Create
                       </BUTTON>
-                      <BUTTON disabled={isSubmitting} variant="secondary">
+                      <BUTTON
+                        disabled={isSubmitting}
+                        variant="secondary"
+                        onClick={() => resetForm()}
+                      >
                         Reset
                       </BUTTON>
                     </div>

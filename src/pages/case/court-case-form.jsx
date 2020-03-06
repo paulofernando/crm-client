@@ -75,7 +75,8 @@ const CreateCourtCaseForm = () => {
                   handleChange,
                   handleBlur,
                   handleSubmit,
-                  isSubmitting
+                  isSubmitting,
+                  resetForm
                 }) => (
                   <FORM onSubmit={handleSubmit} className="mx-auto">
                     <Form.Group controlId="formTitle">
@@ -159,7 +160,7 @@ const CreateCourtCaseForm = () => {
                       >
                         Create
                       </BUTTON>
-                      <BUTTON disabled={isSubmitting} variant="secondary">
+                      <BUTTON disabled={isSubmitting} variant="secondary" onClick={() => resetForm()}>
                         Reset
                       </BUTTON>
                     </div>
