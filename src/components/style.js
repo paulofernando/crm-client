@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Button, ToggleButton } from 'react-bootstrap';
+import Header from './header';
 
 export const CONTAINER = styled.div`
   background: #352f64;
@@ -54,4 +55,13 @@ export const BUTTON = styled(Button)`
 
 export const TOGGLE = styled(ToggleButton)`    
   font-size: 1.2em;
+`;
+
+export const HEADER = styled(Header)`    
+  font-size: 1.2em;
+  background-color: #3f58e3;
+
+  .headerTitle {
+    text-align: center;
+  }
 `;

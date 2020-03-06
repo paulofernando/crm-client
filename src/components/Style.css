@@ -108,6 +108,8 @@ div.prosecutor {
 
 .courtCaseDetailed {
     width: 100%;
+    margin: 0em;
+    margin-top: 1em;
 }
 
 .courtCaseCard > Link {
@@ -154,6 +156,11 @@ div.prosecutor {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+.header {
+    background-color: #8063e1;
+    padding: .5em;
 }
 
 .headerTitle {
