@@ -5,6 +5,7 @@ import '../../App.css';
 
 import CourtCaseTile from "../../components/case/court-case-tile";
 import Header from "../../components/header";
+import Loading from "../loading";
 
 export const COURT_CASE_TILE_DATA = gql`
   fragment CourtCaseTile on CourtCase {
@@ -35,7 +36,7 @@ const GET_COURT_CASES = gql`
 const CourtCases = () => {
     const { data, loading, error } = useQuery(GET_COURT_CASES);
   
-    //if (loading) return <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR</p>;
     if (!data) return <p>Not found</p>;
   

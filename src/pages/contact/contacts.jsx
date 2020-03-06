@@ -5,6 +5,7 @@ import '../../App.css';
 
 import ContactTile from "../../components/contact/contact-details";
 import Header from "../../components/header";
+import Loading from "../loading";
 
 export const CONTACT_TILE_DATA = gql`
   fragment ContactTile on Contact {
@@ -35,7 +36,7 @@ const GET_CONTACTS = gql`
 const Contacts = () => {
     const { data, loading, error } = useQuery(GET_CONTACTS);
   
-    //if (loading) return <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR</p>;
     if (!data) return <p>Not found</p>;
   

@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 
 import ContactDetails from "../../components/contact/contact-details";
 import Header from "../../components/header";
+import Loading from "../loading";
 
 import { CONTACT_TILE_DATA } from "./contacts";
 
@@ -21,7 +22,7 @@ const Contact = ({ contactId }) => {
       variables: { contactId }
     });
   
-    //if (loading) return <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR: {error.message}</p>;
     if (!data) return <p>Not found</p>;
 
