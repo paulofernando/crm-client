@@ -37,7 +37,9 @@ export const validCourtCaseSchema = yup.object().shape({
         .string()
         .max(5000, descriptionTooLong),
     value: yup
-        .number(),
+        .number()
+        .required(fieldRequired),
     courtDate: yup
         .date()
+        .required(fieldRequired),
 })
