@@ -5,27 +5,25 @@ import '../componentStyle.css';
 
 import ContactTile from "../contact/contact-details";
 
-class CourtCaseDetails extends React.Component {
-    render() {
-        return (
-            <div className="courtCaseCard courtCaseDetailed">
-                <h3 className="courtCaseTitle">{this.props.courtCase.title}</h3>
-                <p>{this.props.courtCase.description}</p>
-                <div className="cardContainer">
-                    {this.props.courtCase.contacts &&
-                        this.props.courtCase.contacts.map(contact => (
-                            <ContactTile key={contact.id} contact={contact} />
-                        ))}
-                </div>
-                <Moment format="MMMM Do YYYY">
-                    {this.props.courtCase.courtDate}
-                </Moment>
-                <div className="courtCaseValue">
-                    <NumberFormat value={this.props.courtCase.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-                </div>
+const CourtCaseDetails = (props) => { 
+    return (
+        <div className="courtCaseCard courtCaseDetailed">
+            <h3 className="courtCaseTitle">{props.courtCase.title}</h3>
+            <p>{props.courtCase.description}</p>
+            <div className="cardContainer">
+                {props.courtCase.contacts &&
+                    props.courtCase.contacts.map(contact => (
+                        <ContactTile key={contact.id} contact={contact} />
+                    ))}
             </div>
-        );
-    }
+            <Moment format="MMMM Do YYYY">
+                {props.courtCase.courtDate}
+            </Moment>
+            <div className="courtCaseValue">
+                <NumberFormat value={props.courtCase.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+            </div>
+        </div>
+    );    
 }
 
 export default CourtCaseDetails;

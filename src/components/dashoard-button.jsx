@@ -6,19 +6,17 @@ import {
 } from "react-bootstrap";
 import SVGIcon from '../components/svg-icon';
 
-class DashboardButton extends React.Component {
-    render() {
-        return (
-            <OverlayTrigger
-                placement="top"
-                delay={{ show: 500, hide: 300 }}
-                overlay={(<Tooltip>{this.props.tooltip}</Tooltip>)} >
-                <Link className="dashboardButton" to={this.props.to}>
-                    <SVGIcon name={this.props.icon} width="24" />
-                </Link>
-            </OverlayTrigger>
-        );
-    }
+const DashboardButton = (props) => {     
+    return (
+        <OverlayTrigger
+            placement="top"
+            delay={{ show: 500, hide: 300 }}
+            overlay={(<Tooltip>{props.tooltip}</Tooltip>)} >
+            <Link className="dashboardButton" to={props.to}>
+                <SVGIcon name={props.icon} width="24" />
+            </Link>
+        </OverlayTrigger>
+    );    
 }
 
 export default DashboardButton;
