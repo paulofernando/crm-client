@@ -6,11 +6,12 @@ body {
     font-family: Arial;
 }
 
+/* ----------- Contact ----------- */
+
 .contactCard {
     color: white;
     margin: 30px;
     width: 280px;
-    height: 140px;
 
     font-family: Avenir, sans-serif;
     -ms-text-size-adjust: 100%;
@@ -22,14 +23,17 @@ body {
 
 .smallContactCard {
     color: white;
+    font-size: small;
     margin: 10px;
-    width: 80px;
     height: 40px;
 }
 
 .contactCard > div, .smallContactCard > div {
     border-style: solid;
-    border-color: white;
+    border-color: #cccccc;
+}
+
+.smallContactCard > div {
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
@@ -37,19 +41,13 @@ body {
 .contactCard > div {
     padding: 10px;
     border-radius: 12px;
-    border-width: 3px;
+    border-width: 2px;
 }
 
 .smallContactCard > div {
     padding: 5px;
     border-radius: 6px;
     border-width: 1px;
-}
-
-div.accused {
-    background-color: #8063e1;
-    background-image: linear-gradient(135deg, #bd7be8, #8063e1);
-    box-shadow: 5px 5px 5px rgba(34, 50, 84, 0.5), 1px 1px 0px 1px #8063e1;
 }
 
 div.accused {
@@ -76,32 +74,55 @@ div.prosecutor {
     box-shadow: 5px 5px 5px rgba(34,50,84,0.1), 1px 1px 0px 1px #352f64;
 }
 
-.contactCard > div:hover, .smallContactCard > div:hover {
+.smallContactCard > div:hover {
     border-color: darkorange;
     transform: scale(1.1);
 }
 
-.contactCard h3 {
-    font-size: 18px;
-    font-weight: 800;
-}
-
-.contactCard span {
+.contactEmail {
     font-weight: 500;
     opacity: 0.8;
+    font-style: italic;
 }
 
-.cardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+.contactCaseId {
+    color: white;
+    text-decoration: underline;
 }
+
+.contactCaseRole {
+    text-align: center;
+    width: 100%;
+    font-size: small;
+}
+
+/* ----------- Court Case ----------- */
 
 .courtCaseCard {
-    margin-bottom: 60px;
+    margin: 1em;
+    padding: 1em;
+    background-color: #352f64;
+    border-radius: 10px;    
+    width: 30%;    
 }
 
+.courtCaseDetailed {
+    width: 100%;
+    margin: 0em;
+    margin-top: 1em;
+}
+
+.courtCaseCard > Link {
+    cursor: pointer;
+}
+
+.courtCaseTitle {
+    text-align: center;
+}
+
+.courtCaseDescription {    
+    opacity: .9;
+}
 .courtCaseValue {
     float: right;
     color: black;
@@ -110,4 +131,39 @@ div.prosecutor {
     padding: 3px;
     font-size: small;
     opacity: .9;
+}
+
+.courtCaseDate {
+    float: right;
+    color: black;
+    background-color: limegreen;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: small;
+    opacity: .9;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+  }
+
+/* -------------------------------- */
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    background-color: #8063e1;
+    padding: .2em;
+}
+
+.headerTitle {
+    text-align: center;
 }

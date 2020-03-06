@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Form, Button, ToggleButton } from 'react-bootstrap';
+import Header from './header';
 
 export const CONTAINER = styled.div`
-  background: #FCFCFC;
+  background: #352f64;
   width: 500px;
   margin: 0 auto;
   margin-top: 1em;
@@ -12,7 +13,7 @@ export const CONTAINER = styled.div`
   }
 
   label {
-    color: #8063e1;
+    color: white;
     font-size: 1.2em;
     font-weight: 400;
   }
@@ -52,6 +53,11 @@ export const BUTTON = styled(Button)`
   margin: 20px;
 `;
 
-export const TOGGLE = styled(ToggleButton)`    
+export const HEADER = styled(Header)`    
   font-size: 1.2em;
+  background-color: #3f58e3;
+
+  .headerTitle {
+    text-align: center;
+  }
 `;

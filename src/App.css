@@ -13,8 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App-header {  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,22 +38,63 @@
 
 .dashboard {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardGroup {
+  display: flex;
+  border-radius: 6px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #352f64;
+  padding: 1em;
+  margin: 1em;
+}
+
+.dashboardRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardIcon {    
+  margin-left: 2em;
+  margin-right: 2em;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .dashboardButton {
-  background-color: blanchedalmond;
+  background-color:#9cb0ff;
   width: 100px;
   border-radius: 12px;
-  padding: 20px;
-  margin: 50px;   
+  padding: 1em;
+  margin: 2em;   
   border-style: solid;
-  border-color: white;
+  border-color: rgb(202, 202, 202);
   color: black;  
   text-align: center;
   vertical-align: middle;
   text-decoration: none;   
   cursor: pointer;
+}
+
+.courtCaseContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.formButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
 }

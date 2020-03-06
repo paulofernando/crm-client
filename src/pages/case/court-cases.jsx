@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import '../../App.css';
 
-import CourtCaseTile from "../components/court-case-tile";
+import CourtCaseTile from "../../components/case/court-case-tile";
+import Header from "../../components/header";
 
 export const COURT_CASE_TILE_DATA = gql`
   fragment CourtCaseTile on CourtCase {
+    id
     title
     description
     courtDate
@@ -38,6 +41,7 @@ const CourtCases = () => {
   
     return (
       <Fragment>
+        <Header title={"List of Cases"}/>        
         <div className="courtCaseContainer">          
             {data.courtCases &&
               data.courtCases.map(courtCase => (                
