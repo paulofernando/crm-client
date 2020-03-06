@@ -2,18 +2,16 @@ import React from 'react';
 import { Link } from '@reach/router';
 import '../componentStyle.css';
 
-class ContactTile extends React.Component {
-    render() {
-        return (
-            <Link style={{ textDecoration: 'none' }} to={`/contact/${this.props.contact.id}`}>
-                <div className="smallContactCard">
-                    <div className={`${this.props.contact.caseRole.toLowerCase()}`}>
-                        {this.props.contact.firstName}
-                    </div>
+const ContactTile = (props) => {     
+    return (
+        <Link style={{ textDecoration: 'none' }} to={`/contact/${props.contact.id}`}>
+            <div className="smallContactCard">
+                <div className={`${props.contact.caseRole.toLowerCase()}`}>
+                    {props.contact.firstName}
                 </div>
-            </Link>
-        );
-    }
+            </div>
+        </Link>
+    );    
 }
 
 export default ContactTile;

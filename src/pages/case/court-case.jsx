@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 
 import CourtCaseDetails from "../../components/case/court-case-details";
 import Header from "../../components/header";
+import Loading from "../loading";
 
 import { COURT_CASE_TILE_DATA } from "./court-cases";
 
@@ -21,7 +22,7 @@ const CourtCase = ({ courtCaseId }) => {
       variables: { courtCaseId }
     });
   
-    //if (loading) return <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR: {error.message}</p>;
     if (!data) return <p>Not found</p>;
 
