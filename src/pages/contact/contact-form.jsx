@@ -2,7 +2,8 @@ import React from "react";
 import {
   Form,
   ToggleButtonGroup,
-  ToggleButton
+  ToggleButton,
+  Alert
 } from "react-bootstrap";
 import { Formik } from "formik";
 import gql from "graphql-tag";
@@ -44,10 +45,26 @@ const CREATE_CONTACT = gql`
 `;
 
 class CreateContactForm extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      alert: "",
+      type: ""
+    };
+  }
+
   render() {
     return (
       <div>
         <Header title={"Create Contact"} />
+
+        {this.state.alert && this.state.type ? (
+          <Alert variant={this.state.type}>
+            {this.state.alert}
+          </Alert>
+        ) : null}
+
         <CONTAINER>
           <Mutation mutation={CREATE_CONTACT}>
             {(createContact, { data }) => (
@@ -73,10 +90,21 @@ class CreateContactForm extends React.Component {
                         courtCaseId: parseInt(values.caseId)
                       }
                     })
-                      .then(res => console.log(res))
-                      .catch(err => console.log("ERROR: " + err));
-                    setSubmitting(false);
-                    resetForm();
+                      .then(res => {
+                        setSubmitting(false);
+                        resetForm();
+                        this.setState({
+                          alert: "Contact created successfully!",
+                          type: "success"
+                        })
+                      })
+                      .catch(err => {
+                        this.setState({
+                          alert: "Error on creating contact!",
+                          type: "danger"
+                        })
+                      });
+                    
                   }}
                 >
                   {({
