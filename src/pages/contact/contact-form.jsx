@@ -2,8 +2,7 @@ import React from "react";
 import {
   Form,
   ToggleButtonGroup,
-  ToggleButton,
-  ButtonToolbar
+  ToggleButton
 } from "react-bootstrap";
 import { Formik } from "formik";
 import gql from "graphql-tag";
@@ -45,19 +44,6 @@ const CREATE_CONTACT = gql`
 `;
 
 const CreateContactForm = () => {
-  let formValues = {
-    firstName: "",
-    lastName: "",
-    caseRole: "",
-    email: "",
-    caseId: ""
-  }
-
-  const [caseRole, setCaseRole] = React.useState();
-  const handleCaseRoleChange = (selectedValue) => {
-    console.log(selectedValue)
-    formValues.caseRole = selectedValue
-  }  
   return (
     <div>
       <Header title={"Create Contact"} />
@@ -66,7 +52,14 @@ const CreateContactForm = () => {
           {(createContact, { data }) => (
             <div>
               <Formik
-                initialValues={formValues}
+                enableReinitialize
+                initialValues={{
+                  firstName: "",
+                  lastName: "",
+                  email: "",
+                  caseRole: "",
+                  caseId: ""
+                }}
                 validationSchema={validContactSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   console.log(values)
@@ -93,7 +86,8 @@ const CreateContactForm = () => {
                   handleBlur,
                   handleSubmit,
                   isSubmitting,
-                  resetForm
+                  resetForm,
+                  setFieldValue
                 }) => (
                   <FORM onSubmit={handleSubmit} className="mx-auto">
                     <Form.Group controlId="formFirstName">
@@ -144,35 +138,39 @@ const CreateContactForm = () => {
                       {touched.email && errors.email ? (
                         <div className="error-message">{errors.email}</div>
                       ) : null}
-                    </Form.Group>
-                    <Form.Group controlId="formEmail">
+                    </Form.Group>                    
+                    <Form.Group controlId="formCaseRole">
                       <Form.Label>Court Role</Form.Label>
                         <ToggleButtonGroup
                           type="radio"
                           name="caseRole"
-                          onChange={handleCaseRoleChange}
+                          size="sm"
                         >
                           <ToggleButton
                             variant="outline-primary"
                             value={"Accused"}
+                            onChange={() => setFieldValue("caseRole", "Accused")}
                           >
                             Accused
                           </ToggleButton>
                           <ToggleButton
                             variant="outline-primary"
                             value={"Barrister"}
+                            onChange={() => setFieldValue("caseRole", "Barrister")}
                           >
                             Barrister
                           </ToggleButton>
                           <ToggleButton
                             variant="outline-primary"
                             value={"Judge"}
+                            onChange={() => setFieldValue("caseRole", "Judge")}
                           >
                             Judge
                           </ToggleButton>
                           <ToggleButton
                             variant="outline-primary"
                             value={"Prosecutor"}
+                            onChange={() => setFieldValue("caseRole", "Prosecutor")}
                           >
                             Prosecutor
                           </ToggleButton>
