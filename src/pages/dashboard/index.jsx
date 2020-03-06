@@ -1,27 +1,51 @@
 import React from "react";
-import { Link } from '@reach/router';
+import {
+    FormControl,
+    InputGroup,
+    Button,
+    Tooltip
+} from "react-bootstrap";
 import '../../App.css'
 
 import Header from "../../components/header";
+import DashboardButton from '../../components/dashoard-button';
 
 const Dashboard = () => {
     return (
         <div>
-            <Header title={"Dashboard"}/>
+            <Header title={"Dashboard"} />
             <div className="dashboard">
                 <div className="dashboardGroup">
                     <h3>Court Cases</h3>
                     <div className="dashboardRow">
-                        <Link className="dashboardButton" to={`/cases`}>List</Link>
-                        <Link className="dashboardButton" to={`/case/create`}>Create</Link>
+                        <DashboardButton to={`/cases`} tooltip="List" icon="grid"/>
+                        <DashboardButton to={`/case/create`} tooltip="Create" icon="create"/>
                     </div>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            type="number"
+                            placeholder="Court case id"
+                        />
+                        <InputGroup.Append>
+                            <Button variant="primary">Search</Button>
+                        </InputGroup.Append>
+                    </InputGroup>
                 </div>
                 <div className="dashboardGroup">
                     <h3>Contacts</h3>
                     <div className="dashboardRow">
-                        <Link className="dashboardButton" to={`/contacts`}>List</Link>
-                        <Link className="dashboardButton" to={`/contact/create`}>Create</Link>
+                        <DashboardButton to={`/contacts`} tooltip="List" icon="grid"/>
+                        <DashboardButton to={`/contact/create`} tooltip="Create" icon="create"/>                        
                     </div>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            type="number"
+                            placeholder="Contact id"
+                        />
+                        <InputGroup.Append>
+                            <Button variant="primary">Search</Button>
+                        </InputGroup.Append>
+                    </InputGroup>
                 </div>
             </div>
         </div>
