@@ -6,9 +6,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Pages from "./pages";
 
+import {PROD_API_URL, LOCAL_API_URL} from "./utils/constants"
+
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: "http://127.0.0.1:4000/graphql"
+  uri: (process.env.NODE_ENV === 'production') ? PROD_API_URL : LOCAL_API_URL
 });
 
 const client = new ApolloClient({
