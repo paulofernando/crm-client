@@ -1,8 +1,9 @@
 import React from 'react';
-import SVGIcon from './svg-icon';
 import { Row, Col } from "react-bootstrap";
-import './style.css';
 import { Link } from '@reach/router';
+import './style.css';
+
+import SVGIcon from './svg-icon';
 
 class Header extends React.Component {
     render() {
