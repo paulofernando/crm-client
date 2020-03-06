@@ -1,7 +1,7 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import Moment from 'react-moment';
-import '../style.css';
+import '../componentStyle.css';
 
 import ContactTile from "../contact/contact-details";
 

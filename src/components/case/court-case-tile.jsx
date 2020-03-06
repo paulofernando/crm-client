@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import Moment from 'react-moment';
-import '../style.css';
+import '../componentStyle.css';
 
 import ContactTileSmall from "../contact/contact-tile";
 

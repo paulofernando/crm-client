@@ -72,7 +72,7 @@ div.prosecutor {
     background-color: #352f64;
     background-image: linear-gradient(135deg, #415197, #352f64);
     box-shadow: 5px 5px 5px rgba(34,50,84,0.1), 1px 1px 0px 1px #352f64;
-}
+} 
 
 .smallContactCard > div:hover {
     border-color: darkorange;

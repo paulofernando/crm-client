@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from "react-bootstrap";
 import { Link } from '@reach/router';
-import '../style.css';
+import '../componentStyle.css';
 
 import SVGIcon from '../svg-icon';
 
