@@ -42,5 +42,4 @@ export const validCourtCaseSchema = yup.object().shape({
         .required(fieldRequired),
     courtDate: yup
         .date()
-        .required(fieldRequired),
 })

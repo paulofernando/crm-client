@@ -7,7 +7,9 @@ import {
 import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
+import DatePicker from "react-datepicker";
 import '../../App.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 import { CONTAINER, FORM, BUTTON } from "../../components/style";
 import Header from "../../components/header";
@@ -47,9 +49,16 @@ class CreateCourtCaseForm extends React.Component {
     super(props)
     this.state = {
       alert: "",
-      type: ""
+      type: "",
+      courtDate: ""
     };
   }
+
+  handleDateChange = courtDate => {
+    this.setState({
+      courtDate: courtDate
+    });
+  };
 
   render() {
     return (
@@ -80,7 +89,7 @@ class CreateCourtCaseForm extends React.Component {
                         title: values.title,
                         description: values.description,
                         value: parseFloat(values.value),
-                        courtDate: values.courtDate
+                        courtDate: this.state.courtDate
                       }
                     })
                       .then(res => {
@@ -167,20 +176,13 @@ class CreateCourtCaseForm extends React.Component {
                         </Form.Group>
                         <Form.Group style={{ width: '50%' }} controlId="formCourtDate">
                           <Form.Label>Court Date</Form.Label>
-                          <Form.Control
-                            type="text"
+                          <DatePicker
                             name="courtDate"
-                            placeholder="01-30-2020"
-                            onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.courtDate}
-                            className={
-                              touched.courtDate && errors.courtDate ? "error" : null
-                            }
+                            selected={this.state.courtDate}
+                            onChange={this.handleDateChange}
+                            onBlur={handleBlur}                            
                           />
-                          {touched.courtDate && errors.courtDate ? (
-                            <div className="error-message">{errors.courtDate}</div>
-                          ) : null}
                         </Form.Group>
 
                         <div className="formButtonContainer">
