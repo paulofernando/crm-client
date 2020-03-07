@@ -24,7 +24,7 @@ export const validContactSchema = yup.object().shape({
         .max(20, nameTooLong)
         .required(fieldRequired),
     caseId: yup
-        .number()
+        .string()
         .required(fieldRequired)
 })
 
