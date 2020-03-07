@@ -3,13 +3,13 @@ import { Router } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Contact from './contact/contact';
-import Contacts from './contact/contacts';
-import CourtCase from './case/court-case';
-import CourtCases from './case/court-cases';
+import Contact from './contact/Contact';
+import Contacts from './contact/ContactList';
+import Case from './case/Case';
+import Cases from './case/CaseList';
 import Dashboard from './dashboard';
-import CreateCourtCaseForm from './case/court-case-form';
-import CreateContactForm from './contact/contact-form';
+import CreateCaseForm from './case/CaseForm';
+import CreateContactForm from './contact/ContactForm';
 //import { Footer, PageContainer } from '../components/';
 
 export default function Pages() {
@@ -17,12 +17,12 @@ export default function Pages() {
     <Fragment>
       <Router primary={false} component={Fragment}>
         <Dashboard path="/" />
-        <CourtCases path="/cases" />
-        <CourtCase path="/case/:courtCaseId" />
+        <Cases path="/cases" />
+        <Case path="/case/:courtCaseId" />
         <Contacts path="/contacts" />
         <Contact path="/contact/:contactId" />        
         <CreateContactForm path="/contact/create"/>
-        <CreateCourtCaseForm path="/case/create"/>
+        <CreateCaseForm path="/case/create"/>
       </Router>
     </Fragment>
   );

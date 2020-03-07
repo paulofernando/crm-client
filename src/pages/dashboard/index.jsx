@@ -1,13 +1,13 @@
 import React from "react";
-import { FormControl, InputGroup, Button } from "react-bootstrap";
+import { InputGroup, Button } from "react-bootstrap";
 import { Link } from "@reach/router";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import "../../App.css";
 
+import "../../App.css";
 import Header from "../../components/header";
-import DashboardButton from "../../components/dashoard-button";
+import DashboardButton from "../../components/DashoardButton";
 
 const GET_CONTACTS_NAMES = gql`
   query {

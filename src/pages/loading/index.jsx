@@ -1,5 +1,6 @@
 import React from "react";
-import SVGIcon from '../../components/svg-icon';
+
+import SVGIcon from '../../components/SVGIcon';
 
 const Loading = (props) => {     
     return (

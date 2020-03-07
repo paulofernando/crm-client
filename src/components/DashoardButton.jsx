@@ -4,7 +4,8 @@ import {
     Tooltip,
     OverlayTrigger
 } from "react-bootstrap";
-import SVGIcon from '../components/svg-icon';
+
+import SVGIcon from '../components/SVGIcon';
 
 const DashboardButton = (props) => {     
     return (

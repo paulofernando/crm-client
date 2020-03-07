@@ -1,9 +1,9 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import Moment from 'react-moment';
-import '../componentStyle.css';
 
-import ContactTile from "../contact/contact-details";
+import '../ComponentStyle.css';
+import ContactTile from "../contact/ContactDetails";
 
 const CourtCaseDetails = (props) => { 
     return (
