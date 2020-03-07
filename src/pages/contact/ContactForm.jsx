@@ -1,4 +1,4 @@
-import React, {useQuery } from "react";
+import React from "react";
 import {
   Form,
   ToggleButtonGroup,
@@ -10,11 +10,10 @@ import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import { Typeahead } from "react-bootstrap-typeahead"
 import { Query } from 'react-apollo'
-import "../../App.css";
 
-import { CONTAINER, FORM, BUTTON } from "../../components/style";
+import "../../App.css";
+import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
-import AutocompleteCase from "../../components/case/autocomplete-case";
 
 import { validContactSchema } from "../../validation";
 

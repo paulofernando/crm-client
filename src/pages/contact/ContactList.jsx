@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import '../../App.css';
 
-import ContactTile from "../../components/contact/contact-details";
+import '../../App.css';
+import ContactTile from "../../components/contact/ContactDetails";
 import Header from "../../components/header";
 import Loading from "../loading";
 

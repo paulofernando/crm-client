@@ -8,10 +8,10 @@ import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import DatePicker from "react-datepicker";
-import '../../App.css';
 import "react-datepicker/dist/react-datepicker.css";
 
-import { CONTAINER, FORM, BUTTON } from "../../components/style";
+import '../../App.css';
+import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
 
 import { validCourtCaseSchema } from "../../validation";
@@ -180,8 +180,7 @@ class CreateCourtCaseForm extends React.Component {
                             name="courtDate"
                             onBlur={handleBlur}
                             selected={this.state.courtDate}
-                            onChange={this.handleDateChange}
-                            onBlur={handleBlur}                            
+                            onChange={this.handleDateChange}                  
                           />
                         </Form.Group>
 

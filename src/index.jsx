@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Pages from "./pages";
 
-import {PROD_API_URL, LOCAL_API_URL} from "./utils/constants"
+import {PROD_API_URL, LOCAL_API_URL} from "./utils/Constants"
 
 const cache = new InMemoryCache();
 const link = new HttpLink({

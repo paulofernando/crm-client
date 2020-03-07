@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Button, ToggleButton } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import Header from './header';
 
 export const CONTAINER = styled.div`
