@@ -6,6 +6,7 @@ const nameNotLongEnough = 'name must be at least 3 characters'
 const nameTooLong = 'name must be between 3 and 20 characters'
 const descriptionTooLong = 'description must be a maximun of 5000 characters'
 const fieldRequired = 'This field is required'
+const invalidCase = 'Invalid case, please choose one from the list'
 
 export const validContactSchema = yup.object().shape({
     email: yup
@@ -24,8 +25,8 @@ export const validContactSchema = yup.object().shape({
         .max(20, nameTooLong)
         .required(fieldRequired),
     caseId: yup
-        .number()
-        .required(fieldRequired)
+        .string()
+        .required(invalidCase)
 })
 
 export const validCourtCaseSchema = yup.object().shape({
@@ -41,5 +42,4 @@ export const validCourtCaseSchema = yup.object().shape({
         .required(fieldRequired),
     courtDate: yup
         .date()
-        .required(fieldRequired),
 })

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useQuery } from "react";
 import {
   Form,
   ToggleButtonGroup,
@@ -8,10 +8,13 @@ import {
 import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
+import { Typeahead } from "react-bootstrap-typeahead"
+import { Query } from 'react-apollo'
 import "../../App.css";
 
 import { CONTAINER, FORM, BUTTON } from "../../components/style";
 import Header from "../../components/header";
+import AutocompleteCase from "../../components/case/autocomplete-case";
 
 import { validContactSchema } from "../../validation";
 
@@ -44,13 +47,23 @@ const CREATE_CONTACT = gql`
   }
 `;
 
+const GET_CASES_TITLES = gql`
+  query {
+    courtCases {
+      id
+      title
+    }
+  }
+`;
+
 class CreateContactForm extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
       alert: "",
-      type: ""
+      type: "",
+      caseOptions: ""
     };
   }
 
@@ -119,6 +132,7 @@ class CreateContactForm extends React.Component {
                     setFieldValue
                   }) => (
                     <FORM onSubmit={handleSubmit} className="mx-auto">
+
                       <Form.Group controlId="formFirstName">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control
@@ -134,6 +148,7 @@ class CreateContactForm extends React.Component {
                           <div className="error-message">{errors.firstName}</div>
                         ) : null}
                       </Form.Group>
+                      
                       <Form.Group controlId="formLastName">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control
@@ -151,6 +166,7 @@ class CreateContactForm extends React.Component {
                           <div className="error-message">{errors.lastName}</div>
                         ) : null}
                       </Form.Group>
+                      
                       <Form.Group controlId="formEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
@@ -168,6 +184,7 @@ class CreateContactForm extends React.Component {
                           <div className="error-message">{errors.email}</div>
                         ) : null}
                       </Form.Group>                    
+                      
                       <Form.Group controlId="formCaseRole">
                         <Form.Label>Court Role</Form.Label>
                           <ToggleButtonGroup
@@ -206,21 +223,35 @@ class CreateContactForm extends React.Component {
                           </ToggleButtonGroup>
                       </Form.Group>
 
-                      <Form.Group controlId="formCourtCaseId">
-                        <Form.Label>Case ID</Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="caseId"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.caseId}
-                          className={
-                            touched.caseId && errors.caseId ? "error" : null
-                          }
-                        />
-                        {touched.caseId && errors.caseId ? (
-                          <div className="error-message">{errors.caseId}</div>
-                        ) : null}
+                      <Form.Group controlId="formCourtCase">
+                        <Form.Label>Case</Form.Label>
+                        <Query query={GET_CASES_TITLES}>
+                            {({ loading, error, data }) => {
+                              if (loading) return <div>Fetching...</div>
+                              if (error) return <div>Error</div>
+
+                              const options = []
+                              data.courtCases.map(item => (
+                                options.push({label: item.title, id: item.id})
+                              ))
+
+                              return (
+                                <Typeahead
+                                  id="autocompleteCases"
+                                  name="caseId"
+                                  options={options}
+                                  placeholder="Choose a case..."
+                                  onChange={selected => setFieldValue("caseId", selected[0].id)}
+                                  className={
+                                    touched.caseId && errors.caseId ? "error" : null
+                                  }
+                                />
+                              )
+                            }}
+                          </Query>                                        
+                          {touched.caseId && errors.caseId ? (
+                            <div className="error-message">{errors.caseId}</div>
+                          ) : null}
                       </Form.Group>
 
                       <div className="formButtonContainer">
