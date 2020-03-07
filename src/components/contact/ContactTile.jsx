@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-import '../ComponentStyle.css';
+import '../style.css';
 
 const ContactTile = (props) => {     
     return (

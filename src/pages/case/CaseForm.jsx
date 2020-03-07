@@ -11,7 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import '../../App.css';
-import { CONTAINER, FORM, BUTTON } from "../../components/Style";
+import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
 
 import { validCourtCaseSchema } from "../../validation";

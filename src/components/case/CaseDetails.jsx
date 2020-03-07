@@ -2,7 +2,7 @@ import React from 'react';
 import NumberFormat from 'react-number-format';
 import Moment from 'react-moment';
 
-import '../ComponentStyle.css';
+import '../style.css';
 import ContactTile from "../contact/ContactDetails";
 
 const CourtCaseDetails = (props) => { 

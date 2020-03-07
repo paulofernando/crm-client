@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from "react-bootstrap";
 import { Link } from '@reach/router';
 
-import '../ComponentStyle.css';
+import '../style.css';
 import SVGIcon from '../SVGIcon';
 
 const Header = (props) => {     

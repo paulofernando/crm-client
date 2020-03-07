@@ -12,7 +12,7 @@ import { Typeahead } from "react-bootstrap-typeahead"
 import { Query } from 'react-apollo'
 
 import "../../App.css";
-import { CONTAINER, FORM, BUTTON } from "../../components/Style";
+import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
 
 import { validContactSchema } from "../../validation";

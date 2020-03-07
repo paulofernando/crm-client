@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import Moment from 'react-moment';
 
-import '../ComponentStyle.css';
+import '../style.css';
 import ContactTileSmall from "../contact/ContactTile";
 
 const CourtCaseTile = (props) => {     
