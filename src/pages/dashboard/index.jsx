@@ -8,6 +8,7 @@ import gql from "graphql-tag";
 import "../../App.css";
 import Header from "../../components/header";
 import DashboardButton from "../../components/DashoardButton";
+import SVGIcon from "../../components/SVGIcon";
 
 const GET_CONTACTS_NAMES = gql`
   query {
@@ -70,7 +71,10 @@ class Dashboard extends React.Component {
 
                   const options = [];
                   data.courtCases.map(item =>
-                    options.push({ label: `${item.id} - ${item.title}`, id: item.id })
+                    options.push({
+                      label: `${item.id} - ${item.title}`,
+                      id: item.id
+                    })
                   );
 
                   return (
@@ -80,7 +84,9 @@ class Dashboard extends React.Component {
                         name="caseId"
                         placeholder="Choose a case..."
                         options={options}
-                        onChange={selected => this.setState({ caseId: selected[0].id })}
+                        onChange={selected =>
+                          this.setState({ caseId: selected[0].id })
+                        }
                       />
                       <InputGroup.Append>
                         <Link to={`/case/${this.state.caseId}`}>
@@ -124,7 +130,9 @@ class Dashboard extends React.Component {
                         name="contactId"
                         placeholder="Choose a contact..."
                         options={options}
-                        onChange={selected => this.setState({ contactId: selected[0].id })}
+                        onChange={selected =>
+                          this.setState({ contactId: selected[0].id })
+                        }
                       />
                       <InputGroup.Append>
                         <Link to={`/contact/${this.state.contactId}`}>
@@ -137,6 +145,14 @@ class Dashboard extends React.Component {
               </Query>
             </div>
           </div>
+        </div>
+        <div className="specialDashboardLink">
+          <Link style={{textDecoration: 'none'}} to="/case/createWithContact">
+            <div className="dashboardButton specialButton" >
+              <span className="mr-3">Court Case + Contact</span>
+              <SVGIcon name="create" width="24" />
+            </div>
+          </Link>
         </div>
       </div>
     );

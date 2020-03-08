@@ -75,6 +75,10 @@
   cursor: pointer;
 }
 
+.dashboardButton:hover {
+  background-color: #e66520; 
+}
+
 .courtCaseContainer {
   display: flex;
   flex-wrap: wrap;
@@ -88,4 +92,18 @@
 
 .title {
   text-align: center;
+}
+
+.specialDashboardLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specialButton {
+  text-decoration: none;
+  width: 30em;
+  color: white;
+  padding: 0.5em;
+
 }
