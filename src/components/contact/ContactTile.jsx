@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 
 import '../style.css';
 
-const ContactTile = (props) => {     
+const ContactTile = (props) => {
     return (
         <Link style={{ textDecoration: 'none' }} to={`/contact/${props.contact.id}`}>
             <div className="smallContactCard">
@@ -12,7 +12,7 @@ const ContactTile = (props) => {
                 </div>
             </div>
         </Link>
-    );    
+    );
 }
 
 export default ContactTile;

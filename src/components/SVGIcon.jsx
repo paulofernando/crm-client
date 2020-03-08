@@ -65,18 +65,13 @@ const getPath = (name, props) => {
 
 const SVGIcon = ({
   name = "",
-  style = {},
   fill = "#eee",
-  viewBox = "",
   width = "100%",
-  className = "",
   height = "100%"
 }) => (
   <svg
     width={width}
-    style={style}
     height={height}
-    className={className}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     xmlnsXlink="http://www.w3.org/1999/xlink"

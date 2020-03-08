@@ -34,23 +34,23 @@ const GET_COURT_CASES = gql`
 `;
 
 const CourtCases = () => {
-    const { data, loading, error } = useQuery(GET_COURT_CASES);
-  
-    if (loading) return <Loading />;
-    if (error) return <p>ERROR</p>;
-    if (!data) return <p>Not found</p>;
-  
-    return (
-      <Fragment>
-        <Header title={"List of Cases"}/>        
-        <div className="courtCaseContainer">          
-            {data.courtCases &&
-              data.courtCases.map(courtCase => (                
-                  <CourtCaseTile key={courtCase.id} courtCase={courtCase} />
-              ))}
-          </div>        
-      </Fragment>
-    );
-  };
-  
-  export default CourtCases;
+  const { data, loading, error } = useQuery(GET_COURT_CASES);
+
+  if (loading) return <Loading />;
+  if (error) return <p>ERROR</p>;
+  if (!data) return <p>Not found</p>;
+
+  return (
+    <Fragment>
+      <Header title={"List of Cases"} />
+      <div className="courtCaseContainer">
+        {data.courtCases &&
+          data.courtCases.map(courtCase => (
+            <CourtCaseTile key={courtCase.id} courtCase={courtCase} />
+          ))}
+      </div>
+    </Fragment>
+  );
+};
+
+export default CourtCases;

@@ -7,7 +7,7 @@ import {
 
 import SVGIcon from '../components/SVGIcon';
 
-const DashboardButton = (props) => {     
+const DashboardButton = (props) => {
     return (
         <OverlayTrigger
             placement="top"
@@ -17,7 +17,7 @@ const DashboardButton = (props) => {
                 <SVGIcon name={props.icon} width="24" />
             </Link>
         </OverlayTrigger>
-    );    
+    );
 }
 
 export default DashboardButton;

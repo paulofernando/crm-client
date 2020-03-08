@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import '../style.css';
 import ContactTileSmall from "../contact/ContactTile";
 
-const CourtCaseTile = (props) => {     
+const CourtCaseTile = (props) => {
     return (
         <div className="courtCaseCard">
             <Link style={{ color: 'white' }} to={`/case/${props.courtCase.id}`}>
@@ -22,7 +22,7 @@ const CourtCaseTile = (props) => {
                 {props.courtCase.courtDate}
             </Moment>
         </div>
-    );    
+    );
 }
 
 export default CourtCaseTile;

@@ -11,7 +11,6 @@ import Dashboard from './dashboard';
 import CreateCourtCaseForm from './case/CaseForm';
 import CreateContactForm from './contact/ContactForm';
 import CreateContactCourtCaseForm from './ContactCourtCaseForm';
-//import { Footer, PageContainer } from '../components/';
 
 export default function Pages() {
   return (

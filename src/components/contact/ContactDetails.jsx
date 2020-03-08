@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import '../style.css';
 import LinkedIcon from '../LinkedIcon'
 
-const ContactDetails = (props) => {     
+const ContactDetails = (props) => {
     return (
         <div className="cardContainer">
             <div className="contactCard">
@@ -20,13 +20,13 @@ const ContactDetails = (props) => {
                     <Row>
                         <Col></Col>
                         <Col className="contactCaseRole">{props.contact.caseRole}</Col>
-                        <Col className="contactCaseLinkStatus"><LinkedIcon contact={props.contact}/></Col>
+                        <Col className="contactCaseLinkStatus"><LinkedIcon contact={props.contact} /></Col>
                     </Row>
-                    
+
                 </div>
             </div>
         </div>
-    );    
+    );
 }
 
 export default ContactDetails;

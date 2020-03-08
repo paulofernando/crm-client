@@ -113,36 +113,36 @@ class CreateCourtCaseForm extends React.Component {
                     resetForm,
                     setFieldValue
                   }) => (
-                    <FORM onSubmit={handleSubmit} className="mx-auto">
-                      <CaseFormFields
-                        values={values}
-                        errors={errors}
-                        touched={touched}
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        setFieldValue={setFieldValue}
-                        handleDateChange={this.handleDateChange}
-                        courtDate={this.state.courtDate}
-                      />
+                      <FORM onSubmit={handleSubmit} className="mx-auto">
+                        <CaseFormFields
+                          values={values}
+                          errors={errors}
+                          touched={touched}
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          setFieldValue={setFieldValue}
+                          handleDateChange={this.handleDateChange}
+                          courtDate={this.state.courtDate}
+                        />
 
-                      <div className="formButtonContainer">
-                        <BUTTON
-                          type="submit"
-                          disabled={isSubmitting}
-                          variant="primary"
-                        >
-                          Create
+                        <div className="formButtonContainer">
+                          <BUTTON
+                            type="submit"
+                            disabled={isSubmitting}
+                            variant="primary"
+                          >
+                            Create
                         </BUTTON>
-                        <BUTTON
-                          disabled={isSubmitting}
-                          variant="secondary"
-                          onClick={() => resetForm()}
-                        >
-                          Reset
+                          <BUTTON
+                            disabled={isSubmitting}
+                            variant="secondary"
+                            onClick={() => resetForm()}
+                          >
+                            Reset
                         </BUTTON>
-                      </div>
-                    </FORM>
-                  )}
+                        </div>
+                      </FORM>
+                    )}
                 </Formik>
               </div>
             )}

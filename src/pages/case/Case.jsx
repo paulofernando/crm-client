@@ -18,20 +18,20 @@ export const GET_COURT_CASE_DETAILS = gql`
 `;
 
 const CourtCase = ({ courtCaseId }) => {
-    const { data, loading, error } = useQuery(GET_COURT_CASE_DETAILS, {
-      variables: { courtCaseId }
-    });
-  
-    if (loading) return <Loading />;
-    if (error) return <p>ERROR: {error.message}</p>;
-    if (!data) return <p>Not found</p>;
+  const { data, loading, error } = useQuery(GET_COURT_CASE_DETAILS, {
+    variables: { courtCaseId }
+  });
 
-    return (
-      <Fragment>
-        <Header title={"Case"}/> 
-        <CourtCaseDetails {...data} />
-      </Fragment>
-    );
-  };
-  
-  export default CourtCase;
+  if (loading) return <Loading />;
+  if (error) return <p>ERROR: {error.message}</p>;
+  if (!data) return <p>Not found</p>;
+
+  return (
+    <Fragment>
+      <Header title={"Case"} />
+      <CourtCaseDetails {...data} />
+    </Fragment>
+  );
+};
+
+export default CourtCase;

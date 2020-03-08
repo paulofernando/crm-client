@@ -52,7 +52,7 @@ function LinkedIcon(props) {
   const handleCloseAssign = () => setShowAssign(false);
   const handleShowAssign = () => setShowAssign(true);
   const handleSelectedCase = (selected) => setSelectedCase(selected);
-  
+
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
@@ -128,7 +128,7 @@ function LinkedIcon(props) {
           <Modal.Title>Assign contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Choose the case you would like to link to 
+          Choose the case you would like to link to
           <b>
             {" "}{props.contact.firstName} {props.contact.lastName}
           </b>
@@ -144,19 +144,19 @@ function LinkedIcon(props) {
 
               return (
                 <InputGroup className="mb-3">
-                    <Typeahead
-                      id="autocompleteCasesModal"
-                      name="caseId"
-                      placeholder="Choose a case..."
-                      options={options}
-                      onChange={selected => {
-                        handleSelectedCase(selected[0].id);
-                      }}
-                    />
-                  </InputGroup>
+                  <Typeahead
+                    id="autocompleteCasesModal"
+                    name="caseId"
+                    placeholder="Choose a case..."
+                    options={options}
+                    onChange={selected => {
+                      handleSelectedCase(selected[0].id);
+                    }}
+                  />
+                </InputGroup>
               );
             }}
-        </Query>
+          </Query>
         </Modal.Body>
         <Modal.Footer>
           <Mutation mutation={ASSIGN_CONTACT_CASES}>
@@ -164,7 +164,7 @@ function LinkedIcon(props) {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase} });
+                  updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
                   handleCloseAssign();
                   window.location.reload(false);
                 }}
