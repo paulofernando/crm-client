@@ -1,11 +1,11 @@
-import React from 'react';
-import NumberFormat from 'react-number-format';
-import Moment from 'react-moment';
+import React from "react";
+import NumberFormat from "react-number-format";
+import Moment from "react-moment";
 
-import '../style.css';
+import "../style.css";
 import ContactTile from "../contact/ContactDetails";
 
-const CourtCaseDetails = (props) => { 
+const CourtCaseDetails = props => {
     return (
         <div className="courtCaseCard courtCaseDetailed">
             <h3 className="courtCaseTitle">{props.courtCase.title}</h3>
@@ -13,17 +13,20 @@ const CourtCaseDetails = (props) => {
             <div className="cardContainer">
                 {props.courtCase.contacts &&
                     props.courtCase.contacts.map(contact => (
-                        <ContactTile key={contact.id} contact={contact} />
+                        <ContactTile key={contact.id} contact={contact} courtCase={props.courtCase} />
                     ))}
             </div>
-            <Moment format="MMMM Do YYYY">
-                {props.courtCase.courtDate}
-            </Moment>
+            <Moment format="MMMM Do YYYY">{props.courtCase.courtDate}</Moment>
             <div className="courtCaseValue">
-                <NumberFormat value={props.courtCase.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat
+                    value={props.courtCase.value}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                />
             </div>
         </div>
-    );    
-}
+    );
+};
 
 export default CourtCaseDetails;

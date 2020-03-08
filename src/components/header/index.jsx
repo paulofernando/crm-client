@@ -5,7 +5,7 @@ import { Link } from '@reach/router';
 import '../style.css';
 import SVGIcon from '../SVGIcon';
 
-const Header = (props) => {     
+const Header = (props) => {
     return (
         <Row className="header">
             <Col>
@@ -16,7 +16,7 @@ const Header = (props) => {
             <Col><h4 className="headerTitle">{props.title}</h4></Col>
             <Col></Col>
         </Row>
-    );    
+    );
 }
 
 export default Header;

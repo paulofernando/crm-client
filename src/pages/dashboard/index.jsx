@@ -147,7 +147,7 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="specialDashboardLink">
-          <Link style={{textDecoration: 'none'}} to="/case/createWithContact">
+          <Link style={{ textDecoration: 'none' }} to="/case/createWithContact">
             <div className="dashboardButton specialButton" >
               <span className="mr-3">Court Case + Contact</span>
               <SVGIcon name="create" width="24" />

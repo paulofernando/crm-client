@@ -123,70 +123,70 @@ class CreateContactForm extends React.Component {
                     resetForm,
                     setFieldValue
                   }) => (
-                    <FORM onSubmit={handleSubmit} className="mx-auto">
-                      <ContactFormFields
-                        values={values}
-                        errors={errors}
-                        touched={touched}
-                        handleChange={handleChange}
-                        handleBlur={handleBlur}
-                        setFieldValue={setFieldValue}
-                      />
-                      <Form.Group controlId="formCourtCase">
-                        <Form.Label>Case</Form.Label>
-                        <Query query={GET_CASES_TITLES}>
-                          {({ loading, error, data }) => {
-                            if (loading) return <div>Fetching...</div>;
-                            if (error) return <div>Error</div>;
+                      <FORM onSubmit={handleSubmit} className="mx-auto">
+                        <ContactFormFields
+                          values={values}
+                          errors={errors}
+                          touched={touched}
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          setFieldValue={setFieldValue}
+                        />
+                        <Form.Group controlId="formCourtCase">
+                          <Form.Label>Case</Form.Label>
+                          <Query query={GET_CASES_TITLES}>
+                            {({ loading, error, data }) => {
+                              if (loading) return <div>Fetching...</div>;
+                              if (error) return <div>Error</div>;
 
-                            const options = [];
-                            data.courtCases.map(item =>
-                              options.push({
-                                label: `${item.id} - ${item.title}`,
-                                id: item.id
-                              })
-                            );
+                              const options = [];
+                              data.courtCases.map(item =>
+                                options.push({
+                                  label: `${item.id} - ${item.title}`,
+                                  id: item.id
+                                })
+                              );
 
-                            return (
-                              <Typeahead
-                                id="autocompleteCases"
-                                name="caseId"
-                                options={options}
-                                placeholder="Choose a case..."
-                                onChange={selected =>
-                                  setFieldValue("caseId", selected[0].id)
-                                }
-                                className={
-                                  touched.caseId && errors.caseId
-                                    ? "error"
-                                    : null
-                                }
-                              />
-                            );
-                          }}
-                        </Query>
-                        {touched.caseId && errors.caseId ? (
-                          <div className="error-message">{errors.caseId}</div>
-                        ) : null}
-                      </Form.Group>
-                      <div className="formButtonContainer">
-                        <BUTTON
-                          type="submit"
-                          disabled={isSubmitting}
-                          variant="primary"
-                        >
-                          Create
+                              return (
+                                <Typeahead
+                                  id="autocompleteCases"
+                                  name="caseId"
+                                  options={options}
+                                  placeholder="Choose a case..."
+                                  onChange={selected =>
+                                    setFieldValue("caseId", selected[0].id)
+                                  }
+                                  className={
+                                    touched.caseId && errors.caseId
+                                      ? "error"
+                                      : null
+                                  }
+                                />
+                              );
+                            }}
+                          </Query>
+                          {touched.caseId && errors.caseId ? (
+                            <div className="error-message">{errors.caseId}</div>
+                          ) : null}
+                        </Form.Group>
+                        <div className="formButtonContainer">
+                          <BUTTON
+                            type="submit"
+                            disabled={isSubmitting}
+                            variant="primary"
+                          >
+                            Create
                         </BUTTON>
-                        <BUTTON
-                          disabled={isSubmitting}
-                          variant="secondary"
-                          onClick={() => resetForm()}
-                        >
-                          Reset
+                          <BUTTON
+                            disabled={isSubmitting}
+                            variant="secondary"
+                            onClick={() => resetForm()}
+                          >
+                            Reset
                         </BUTTON>
-                      </div>
-                    </FORM>
-                  )}
+                        </div>
+                      </FORM>
+                    )}
                 </Formik>
               </div>
             )}

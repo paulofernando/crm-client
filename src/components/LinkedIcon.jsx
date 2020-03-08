@@ -52,7 +52,7 @@ function LinkedIcon(props) {
   const handleCloseAssign = () => setShowAssign(false);
   const handleShowAssign = () => setShowAssign(true);
   const handleSelectedCase = (selected) => setSelectedCase(selected);
-  
+
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
@@ -61,10 +61,10 @@ function LinkedIcon(props) {
       <OverlayTrigger
         placement="right"
         delay={{ show: 800, hide: 300 }}
-        overlay={<Tooltip>{props.contact.courtCase ? "Unassign contact" : "Assign contact"}</Tooltip>}
+        overlay={<Tooltip>{props.courtCase ? "Unassign contact" : "Assign contact"}</Tooltip>}
       >
-        <div onClick={() => props.contact.courtCase ? handleShowUnassign() : handleShowAssign()}>
-          {props.contact.courtCase && (
+        <div onClick={() => props.courtCase ? handleShowUnassign() : handleShowAssign()}>
+          {props.courtCase && (
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -73,7 +73,7 @@ function LinkedIcon(props) {
             </div>
           )}
 
-          {!props.contact.courtCase && (
+          {!props.courtCase && (
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -94,7 +94,7 @@ function LinkedIcon(props) {
             {props.contact.firstName} {props.contact.lastName}
           </b>{" "}
           from case{" "}
-          <b>{props.contact.courtCase && props.contact.courtCase.title}</b>?
+          <b>{props.courtCase && props.courtCase.title}</b>?
         </Modal.Body>
         <Modal.Footer>
           <Mutation mutation={UNASSIGN_CONTACT_CASES}>
@@ -128,7 +128,7 @@ function LinkedIcon(props) {
           <Modal.Title>Assign contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Choose the case you would like to link to 
+          Choose the case you would like to link to
           <b>
             {" "}{props.contact.firstName} {props.contact.lastName}
           </b>
@@ -144,19 +144,19 @@ function LinkedIcon(props) {
 
               return (
                 <InputGroup className="mb-3">
-                    <Typeahead
-                      id="autocompleteCasesModal"
-                      name="caseId"
-                      placeholder="Choose a case..."
-                      options={options}
-                      onChange={selected => {
-                        handleSelectedCase(selected[0].id);
-                      }}
-                    />
-                  </InputGroup>
+                  <Typeahead
+                    id="autocompleteCasesModal"
+                    name="caseId"
+                    placeholder="Choose a case..."
+                    options={options}
+                    onChange={selected => {
+                      handleSelectedCase(selected[0].id);
+                    }}
+                  />
+                </InputGroup>
               );
             }}
-        </Query>
+          </Query>
         </Modal.Body>
         <Modal.Footer>
           <Mutation mutation={ASSIGN_CONTACT_CASES}>
@@ -164,7 +164,7 @@ function LinkedIcon(props) {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase} });
+                  updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
                   handleCloseAssign();
                   window.location.reload(false);
                 }}
