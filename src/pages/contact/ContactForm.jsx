@@ -92,7 +92,6 @@ class CreateContactForm extends React.Component {
                   }}
                   validationSchema={validContactSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
-                    console.log(values)
                     createContact({
                       variables: {
                         firstName: values.firstName,
@@ -187,6 +186,7 @@ class CreateContactForm extends React.Component {
                       
                       <Form.Group controlId="formCaseRole">
                         <Form.Label>Court Role</Form.Label>
+                        <br></br>
                           <ToggleButtonGroup
                             type="radio"
                             name="caseRole"
@@ -232,7 +232,7 @@ class CreateContactForm extends React.Component {
 
                               const options = []
                               data.courtCases.map(item => (
-                                options.push({label: item.title, id: item.id})
+                                options.push({ label: `${item.id} - ${item.title}`, id: item.id })
                               ))
 
                               return (
