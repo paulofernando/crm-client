@@ -8,8 +8,9 @@ import Contacts from './contact/ContactList';
 import Case from './case/Case';
 import Cases from './case/CaseList';
 import Dashboard from './dashboard';
-import CreateCaseForm from './case/CaseForm';
+import CreateCourtCaseForm from './case/CaseForm';
 import CreateContactForm from './contact/ContactForm';
+import CreateContactCourtCaseForm from './ContactCourtCaseForm';
 //import { Footer, PageContainer } from '../components/';
 
 export default function Pages() {
@@ -22,7 +23,8 @@ export default function Pages() {
         <Contacts path="/contacts" />
         <Contact path="/contact/:contactId" />        
         <CreateContactForm path="/contact/create"/>
-        <CreateCaseForm path="/case/create"/>
+        <CreateCourtCaseForm path="/case/create"/>
+        <CreateContactCourtCaseForm path="/case/createWithContact"/>
       </Router>
     </Fragment>
   );

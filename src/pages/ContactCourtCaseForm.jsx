@@ -4,41 +4,49 @@ import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 
-import "../../App.css";
-import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
-import Header from "../../components/header";
-import CaseFormFields from "../../components/case/CaseFormFields";
+import "../App.css";
+import { CONTAINER, FORM, BUTTON } from "../components/StyledComponents";
+import Header from "../components/header";
+import ContactFormFields from "../components/contact/ContactFormFields";
+import CaseFormFields from "../components/case/CaseFormFields";
 
-import { validCourtCaseSchema } from "../../validation";
+import { validContactCourtCaseSchema } from "../validation";
 
-const CREATE_COURT_CASE = gql`
-  mutation CreateCourtCase(
+const CREATE_CONTACT_COURT_CASE = gql`
+  mutation CreateContactCourtCase(
     $title: String!
     $description: String!
     $value: Float!
     $courtDate: String!
+    $firstName: String!
+    $lastName: String!
+    $caseRole: [Role]!
+    $email: String!
   ) {
-    createCourtCase(
+    createContactCourtCase(
       input: {
         title: $title
         description: $description
         value: $value
         courtDate: $courtDate
+        firstName: $firstName
+        lastName: $lastName
+        caseRole: $caseRole
+        email: $email
       }
     ) {
+      contact {
+        id
+      }
       courtCase {
         id
-        title
-        description
-        value
-        courtDate
       }
       errors
     }
   }
 `;
 
-class CreateCourtCaseForm extends React.Component {
+class CreateContactCourtCaseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +57,6 @@ class CreateCourtCaseForm extends React.Component {
   }
 
   handleDateChange = courtDate => {
-    console.log(courtDate);
     this.setState({
       courtDate: courtDate
     });
@@ -58,45 +65,57 @@ class CreateCourtCaseForm extends React.Component {
   render() {
     return (
       <div>
-        <Header title={"Create Case"} />
+        <Header title={"Create Case with Contact"} />
 
         {this.state.alert && this.state.type ? (
           <Alert variant={this.state.type}>{this.state.alert}</Alert>
         ) : null}
 
         <CONTAINER>
-          <Mutation mutation={CREATE_COURT_CASE}>
-            {(createCourtCase, { data }) => (
+          <Mutation mutation={CREATE_CONTACT_COURT_CASE}>
+            {(createContactCourtCase, { data }) => (
               <div>
                 <Formik
                   initialValues={{
                     title: "",
                     description: "",
                     value: "",
-                    courtDate: ""
+                    courtDate: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    caseRole: ""
                   }}
-                  validationSchema={validCourtCaseSchema}
+                  validationSchema={validContactCourtCaseSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
-                    createCourtCase({
+                    console.log("create contact and court case");
+                    console.log(values);
+                    console.log(this.state);
+                    console.log(this.state.courtDate);
+                    createContactCourtCase({
                       variables: {
                         title: values.title,
                         description: values.description,
                         value: parseFloat(values.value),
-                        courtDate: this.state.courtDate
+                        courtDate: this.state.courtDate,
+                        firstName: values.firstName,
+                        lastName: values.lastName,
+                        caseRole: values.caseRole,
+                        email: values.email
                       }
                     })
                       .then(res => {
                         setSubmitting(true);
                         resetForm();
                         this.setState({
-                          alert: "Court case created successfully!",
+                          alert: "Contact and court case created successfully!",
                           type: "success"
                         });
                       })
                       .catch(err => {
                         setSubmitting(false);
                         this.setState({
-                          alert: "Error on creating court case!",
+                          alert: "Error on creating contact and court case!",
                           type: "danger"
                         });
                       });
@@ -123,6 +142,18 @@ class CreateCourtCaseForm extends React.Component {
                         setFieldValue={setFieldValue}
                         handleDateChange={this.handleDateChange}
                         courtDate={this.state.courtDate}
+                      />
+
+                      <h3 className="m-3" style={{ textAlign: "center" }}>
+                        Create Contact
+                      </h3>
+                      <ContactFormFields
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                        setFieldValue={setFieldValue}
                       />
 
                       <div className="formButtonContainer">
@@ -153,4 +184,4 @@ class CreateCourtCaseForm extends React.Component {
   }
 }
 
-export default CreateCourtCaseForm;
+export default CreateContactCourtCaseForm;

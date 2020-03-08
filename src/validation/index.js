@@ -42,3 +42,35 @@ export const validCourtCaseSchema = yup.object().shape({
     courtDate: yup
         .date()
 })
+
+export const validContactCourtCaseSchema = yup.object().shape({
+    email: yup
+        .string()
+        .max(100)
+        .email(invalidEmail)
+        .required(emailRequired),
+    firstName: yup
+        .string()
+        .min(3, nameNotLongEnough)
+        .max(20, nameTooLong)
+        .required(fieldRequired),
+    lastName: yup
+        .string()
+        .min(3, nameNotLongEnough)
+        .max(20, nameTooLong)
+        .required(fieldRequired),
+    caseId: yup
+        .string(),
+    title: yup
+        .string()
+        .max(100)
+        .required(fieldRequired),
+    description: yup
+        .string()
+        .max(5000, descriptionTooLong),
+    value: yup
+        .number()
+        .required(fieldRequired),
+    courtDate: yup
+        .date()
+})

@@ -75,7 +75,8 @@ div.prosecutor {
 } 
 
 .smallContactCard > div:hover {
-    border-color: darkorange;
+    border-color: #e66520;
+    border-width: .15em;
     transform: scale(1.1);
 }
 
