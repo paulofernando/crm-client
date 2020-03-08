@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Tooltip, OverlayTrigger } from "react-bootstrap";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 
@@ -27,20 +27,34 @@ function LinkedIcon(props) {
 
   return (
     <>
-      <div onClick={handleShow}>
-        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <SVGIcon name={isHovering ? "unlinked" : "linked"} width="18" />
+      <OverlayTrigger
+        placement="right"
+        delay={{ show: 800, hide: 300 }}
+        overlay={<Tooltip>Unassign contact</Tooltip>}
+      >
+        <div onClick={handleShow}>
+          {props.contact.courtCase && (
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <SVGIcon name={isHovering ? "unlinked" : "linked"} width="18" />
+            </div>
+          )}
         </div>
-      </div>
+      </OverlayTrigger>
 
       <Modal show={show} onHide={handleClose} style={{ color: "black" }}>
         <Modal.Header closeButton>
           <Modal.Title>Unassign contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to unassign <b>{props.contact.firstName}{" "}
-          {props.contact.lastName}</b> from 
-          case <b>{props.contact.courtCase && props.contact.courtCase.title}</b>?
+          Are you sure you want to unassign{" "}
+          <b>
+            {props.contact.firstName} {props.contact.lastName}
+          </b>{" "}
+          from case{" "}
+          <b>{props.contact.courtCase && props.contact.courtCase.title}</b>?
         </Modal.Body>
         <Modal.Footer>
           <Mutation mutation={UNASSIGN_CONTACT_CASES}>
