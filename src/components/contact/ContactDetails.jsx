@@ -20,7 +20,7 @@ const ContactDetails = (props) => {
                     <Row>
                         <Col></Col>
                         <Col className="contactCaseRole">{props.contact.caseRole}</Col>
-                        <Col className="contactCaseLinkStatus"><LinkedIcon /></Col>
+                        <Col className="contactCaseLinkStatus"><LinkedIcon contact={props.contact}/></Col>
                     </Row>
                     
                 </div>
