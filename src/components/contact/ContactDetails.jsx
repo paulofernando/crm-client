@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { Row, Col } from "react-bootstrap";
 
 import '../style.css';
+import LinkedIcon from '../LinkedIcon'
 
 const ContactDetails = (props) => {     
     return (
@@ -15,7 +17,12 @@ const ContactDetails = (props) => {
                             Case #{props.contact.courtCase.id}
                         </Link>
                     }
-                    <div className="contactCaseRole">{props.contact.caseRole}</div>
+                    <Row>
+                        <Col></Col>
+                        <Col className="contactCaseRole">{props.contact.caseRole}</Col>
+                        <Col className="contactCaseLinkStatus"><LinkedIcon contact={props.contact}/></Col>
+                    </Row>
+                    
                 </div>
             </div>
         </div>

@@ -91,9 +91,12 @@ div.prosecutor {
 }
 
 .contactCaseRole {
-    text-align: center;
-    width: 100%;
     font-size: small;
+}
+
+.contactCaseLinkStatus {
+    text-align: right;
+    cursor: pointer;
 }
 
 /* ----------- Court Case ----------- */

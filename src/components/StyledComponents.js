@@ -8,10 +8,6 @@ export const CONTAINER = styled.div`
   margin: 0 auto;
   margin-top: 1em;
 
-  @media(min-width: 786px) {
-    width: 60%;
-  }
-
   label {
     color: white;
     font-size: 1.2em;
@@ -40,10 +36,6 @@ export const FORM = styled(Form)`
   text-align: left;
   padding-top: 2em;
   padding-bottom: 2em;
-
-  @media(min-width: 786px) {
-    width: 50%;
-  }
 `;
 
 export const BUTTON = styled(Button)`  

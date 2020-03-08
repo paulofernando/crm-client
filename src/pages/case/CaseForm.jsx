@@ -101,6 +101,7 @@ class CreateCourtCaseForm extends React.Component {
                         })
                       })
                       .catch(err => {
+                        setSubmitting(false);
                         this.setState({
                           alert: "Error on creating court case!",
                           type: "danger"

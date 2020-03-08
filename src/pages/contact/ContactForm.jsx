@@ -23,7 +23,7 @@ const CREATE_CONTACT = gql`
     $lastName: String!
     $caseRole: [Role]!
     $email: String!
-    $courtCaseId: [ID]!
+    $courtCaseId: [ID]
   ) {
     createContact(
       input: {
@@ -111,6 +111,7 @@ class CreateContactForm extends React.Component {
                         })
                       })
                       .catch(err => {
+                        setSubmitting(false);
                         this.setState({
                           alert: "Error on creating contact!",
                           type: "danger"

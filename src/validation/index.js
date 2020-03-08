@@ -26,7 +26,6 @@ export const validContactSchema = yup.object().shape({
         .required(fieldRequired),
     caseId: yup
         .string()
-        .required(invalidCase)
 })
 
 export const validCourtCaseSchema = yup.object().shape({
