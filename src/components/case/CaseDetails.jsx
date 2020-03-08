@@ -13,7 +13,7 @@ const CourtCaseDetails = props => {
             <div className="cardContainer">
                 {props.courtCase.contacts &&
                     props.courtCase.contacts.map(contact => (
-                        <ContactTile key={contact.id} contact={contact} />
+                        <ContactTile key={contact.id} contact={contact} courtCase={props.courtCase} />
                     ))}
             </div>
             <Moment format="MMMM Do YYYY">{props.courtCase.courtDate}</Moment>
