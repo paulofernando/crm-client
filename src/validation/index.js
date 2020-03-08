@@ -8,7 +8,7 @@ const descriptionTooLong = 'description must be a maximun of 5000 characters'
 const fieldRequired = 'This field is required'
 const invalidCase = 'Invalid case, please choose one from the list'
 
-export const validContactSchema = yup.object().shape({
+export const validSchema = yup.object().shape({
     email: yup
         .string()
         .max(100)
@@ -25,10 +25,7 @@ export const validContactSchema = yup.object().shape({
         .max(20, nameTooLong)
         .required(fieldRequired),
     caseId: yup
-        .string()
-})
-
-export const validCourtCaseSchema = yup.object().shape({
+        .string(),
     title: yup
         .string()
         .max(100)

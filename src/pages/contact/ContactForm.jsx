@@ -9,7 +9,7 @@ import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
 import PartialContactForm from "../../components/contact/PartialContactForm";
 
-import { validContactSchema } from "../../validation";
+import { validSchema } from "../../validation";
 
 const CREATE_CONTACT = gql`
   mutation CreateContact(
@@ -72,7 +72,7 @@ class CreateContactForm extends React.Component {
                     caseRole: "",
                     caseId: ""
                   }}
-                  validationSchema={validContactSchema}
+                  validationSchema={validSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
                     createContact({
                       variables: {
