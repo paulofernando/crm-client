@@ -1,15 +1,17 @@
 import React from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { Query } from "react-apollo";
 
 import "../../App.css";
 import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
-import PartialContactForm from "../../components/contact/PartialContactForm";
+import ContactFormFields from "../../components/contact/ContactFormFields";
 
-import { validSchema } from "../../validation";
+import { validContactSchema } from "../../validation";
 
 const CREATE_CONTACT = gql`
   mutation CreateContact(
@@ -36,6 +38,15 @@ const CREATE_CONTACT = gql`
         email
       }
       errors
+    }
+  }
+`;
+
+const GET_CASES_TITLES = gql`
+  query {
+    courtCases {
+      id
+      title
     }
   }
 `;
@@ -72,7 +83,7 @@ class CreateContactForm extends React.Component {
                     caseRole: "",
                     caseId: ""
                   }}
-                  validationSchema={validSchema}
+                  validationSchema={validContactSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
                     createContact({
                       variables: {
@@ -113,7 +124,7 @@ class CreateContactForm extends React.Component {
                     setFieldValue
                   }) => (
                     <FORM onSubmit={handleSubmit} className="mx-auto">
-                      <PartialContactForm
+                      <ContactFormFields
                         values={values}
                         errors={errors}
                         touched={touched}
@@ -121,6 +132,43 @@ class CreateContactForm extends React.Component {
                         handleBlur={handleBlur}
                         setFieldValue={setFieldValue}
                       />
+                      <Form.Group controlId="formCourtCase">
+                        <Form.Label>Case</Form.Label>
+                        <Query query={GET_CASES_TITLES}>
+                          {({ loading, error, data }) => {
+                            if (loading) return <div>Fetching...</div>;
+                            if (error) return <div>Error</div>;
+
+                            const options = [];
+                            data.courtCases.map(item =>
+                              options.push({
+                                label: `${item.id} - ${item.title}`,
+                                id: item.id
+                              })
+                            );
+
+                            return (
+                              <Typeahead
+                                id="autocompleteCases"
+                                name="caseId"
+                                options={options}
+                                placeholder="Choose a case..."
+                                onChange={selected =>
+                                  setFieldValue("caseId", selected[0].id)
+                                }
+                                className={
+                                  touched.caseId && errors.caseId
+                                    ? "error"
+                                    : null
+                                }
+                              />
+                            );
+                          }}
+                        </Query>
+                        {touched.caseId && errors.caseId ? (
+                          <div className="error-message">{errors.caseId}</div>
+                        ) : null}
+                      </Form.Group>
                       <div className="formButtonContainer">
                         <BUTTON
                           type="submit"

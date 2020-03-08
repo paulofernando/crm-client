@@ -1,21 +1,9 @@
 import React from "react";
 import { Form, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
-import gql from "graphql-tag";
-import { Typeahead } from "react-bootstrap-typeahead";
-import { Query } from "react-apollo";
 
 import "../../App.css";
 
-const GET_CASES_TITLES = gql`
-  query {
-    courtCases {
-      id
-      title
-    }
-  }
-`;
-
-class PartialContactForm extends React.Component {
+class ContactFormFields extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,41 +107,9 @@ class PartialContactForm extends React.Component {
             </ToggleButton>
           </ToggleButtonGroup>
         </Form.Group>
-
-        <Form.Group controlId="formCourtCase">
-          <Form.Label>Case</Form.Label>
-          <Query query={GET_CASES_TITLES}>
-            {({ loading, error, data }) => {
-              if (loading) return <div>Fetching...</div>;
-              if (error) return <div>Error</div>;
-
-              const options = [];
-              data.courtCases.map(item =>
-                options.push({
-                  label: `${item.id} - ${item.title}`,
-                  id: item.id
-                })
-              );
-
-              return (
-                <Typeahead
-                  id="autocompleteCases"
-                  name="caseId"
-                  options={options}
-                  placeholder="Choose a case..."
-                  onChange={selected => setFieldValue("caseId", selected[0].id)}
-                  className={touched.caseId && errors.caseId ? "error" : null}
-                />
-              );
-            }}
-          </Query>
-          {touched.caseId && errors.caseId ? (
-            <div className="error-message">{errors.caseId}</div>
-          ) : null}
-        </Form.Group>
       </>
     );
   }
 }
 
-export default PartialContactForm;
+export default ContactFormFields;
