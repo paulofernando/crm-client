@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Tooltip, OverlayTrigger, InputGroup } from "react-bootstrap";
+import { Modal, Button, Tooltip, OverlayTrigger, InputGroup, Alert } from "react-bootstrap";
 import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import { Typeahead } from "react-bootstrap-typeahead";
@@ -46,18 +46,20 @@ function LinkedIcon(props) {
   const [showAssign, setShowAssign] = useState(false);
   const [selectedCase, setSelectedCase] = useState('');
   const [isHovering, setHover] = useState(false);
+  const [alert, setAlert] = useState("");
 
   const handleCloseUnassign = () => setShowUnassign(false);
   const handleShowUnassign = () => setShowUnassign(true);
   const handleCloseAssign = () => setShowAssign(false);
   const handleShowAssign = () => setShowAssign(true);
   const handleSelectedCase = (selected) => setSelectedCase(selected);
+  const handleAlert = (alertMessage) => setAlert(alertMessage);
 
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
   return (
-    <>
+    <>      
       <OverlayTrigger
         placement="right"
         delay={{ show: 800, hide: 300 }}
@@ -127,6 +129,14 @@ function LinkedIcon(props) {
         <Modal.Header closeButton>
           <Modal.Title>Assign contact</Modal.Title>
         </Modal.Header>
+        {alert ? (
+          <Alert
+            className="customAlert"
+            style={{width: 'auto'}}
+            variant={"danger"}
+            onClick={() => handleAlert("")}
+          > {alert} </Alert>
+        ) : null}
         <Modal.Body>
           Choose the case you would like to link to
           <b>
@@ -165,9 +175,19 @@ function LinkedIcon(props) {
                 onSubmit={e => {
                   e.preventDefault();
                   if (props.contact.id && selectedCase) {
-                    updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
-                    handleCloseAssign();
-                    window.location.reload(false);
+                    updateContact({
+                      variables: {
+                        contactId: props.contact.id,
+                        courtCaseId: selectedCase
+                      }
+                    })
+                    .then(res => {                        
+                      handleCloseAssign();
+                      window.location.reload(false);                      
+                    })
+                    .catch(err => {
+                      handleAlert("This case may have a contact with the same role or it does not exist.")
+                    });                    
                   }
                 }}
               >
