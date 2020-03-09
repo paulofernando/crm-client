@@ -20,7 +20,7 @@ class CaseFormFields extends React.Component {
     return (
       <>
         <Form.Group controlId="formTitle">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Title *</Form.Label>
           <Form.Control
             type="text"
             name="title"
@@ -50,7 +50,7 @@ class CaseFormFields extends React.Component {
           ) : null}
         </Form.Group>
         <Form.Group style={{ width: "50%" }} controlId="formEmail">
-          <Form.Label>Value</Form.Label>
+          <Form.Label>Value *</Form.Label>
           <InputGroup>
             <InputGroup.Prepend>
               <InputGroup.Text>$</InputGroup.Text>
@@ -73,7 +73,7 @@ class CaseFormFields extends React.Component {
           ) : null}
         </Form.Group>
         <Form.Group style={{ width: "50%" }} controlId="formCourtDate">
-          <Form.Label>Court Date</Form.Label>
+          <Form.Label>Court Date *</Form.Label>
           <DatePicker
             name="courtDate"
             onBlur={handleBlur}

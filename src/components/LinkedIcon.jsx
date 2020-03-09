@@ -150,7 +150,7 @@ function LinkedIcon(props) {
                     placeholder="Choose a case..."
                     options={options}
                     onChange={selected => {
-                      handleSelectedCase(selected[0].id);
+                      handleSelectedCase(selected[0] ? selected[0].id : null);
                     }}
                   />
                 </InputGroup>
@@ -164,9 +164,11 @@ function LinkedIcon(props) {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
-                  handleCloseAssign();
-                  window.location.reload(false);
+                  if (props.contact.id && selectedCase) {
+                    updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
+                    handleCloseAssign();
+                    window.location.reload(false);
+                  }
                 }}
               >
                 <Button

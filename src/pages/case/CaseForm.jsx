@@ -49,7 +49,6 @@ class CreateCourtCaseForm extends React.Component {
   }
 
   handleDateChange = courtDate => {
-    console.log(courtDate);
     this.setState({
       courtDate: courtDate
     });
@@ -77,6 +76,10 @@ class CreateCourtCaseForm extends React.Component {
                   }}
                   validationSchema={validCourtCaseSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
+                    if (!this.state.courtDate) {
+                      setSubmitting(false);
+                      return
+                    }
                     createCourtCase({
                       variables: {
                         title: values.title,
@@ -85,13 +88,14 @@ class CreateCourtCaseForm extends React.Component {
                         courtDate: this.state.courtDate
                       }
                     })
-                      .then(res => {
-                        setSubmitting(true);
+                      .then(res => {                        
+                        setSubmitting(false);
                         resetForm();
                         this.setState({
                           alert: "Court case created successfully!",
                           type: "success"
                         });
+                        window.location.reload(false);
                       })
                       .catch(err => {
                         setSubmitting(false);

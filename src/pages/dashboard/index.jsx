@@ -84,8 +84,11 @@ class Dashboard extends React.Component {
                         name="caseId"
                         placeholder="Choose a case..."
                         options={options}
-                        onChange={selected =>
-                          this.setState({ caseId: selected[0].id })
+                        onChange={selected => {
+                            if (selected[0]) {
+                              this.setState({ caseId: selected[0].id })
+                            }
+                          }
                         }
                       />
                       <InputGroup.Append>
@@ -130,8 +133,11 @@ class Dashboard extends React.Component {
                         name="contactId"
                         placeholder="Choose a contact..."
                         options={options}
-                        onChange={selected =>
-                          this.setState({ contactId: selected[0].id })
+                        onChange={selected => {
+                            if (selected[0]) {
+                              this.setState({ contactId: selected[0].id })
+                            }
+                          }
                         }
                       />
                       <InputGroup.Append>

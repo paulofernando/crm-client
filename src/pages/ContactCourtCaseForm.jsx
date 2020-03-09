@@ -88,10 +88,10 @@ class CreateContactCourtCaseForm extends React.Component {
                   }}
                   validationSchema={validContactCourtCaseSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
-                    console.log("create contact and court case");
-                    console.log(values);
-                    console.log(this.state);
-                    console.log(this.state.courtDate);
+                    if (!this.state.courtDate) {
+                        setSubmitting(false);
+                        return
+                    }
                     createContactCourtCase({
                       variables: {
                         title: values.title,
@@ -105,7 +105,7 @@ class CreateContactCourtCaseForm extends React.Component {
                       }
                     })
                       .then(res => {
-                        setSubmitting(true);
+                        setSubmitting(false);
                         resetForm();
                         this.setState({
                           alert: "Contact and court case created successfully!",

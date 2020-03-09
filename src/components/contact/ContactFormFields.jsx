@@ -26,7 +26,7 @@ class ContactFormFields extends React.Component {
     return (
       <>
         <Form.Group controlId="formFirstName">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>First Name *</Form.Label>
           <Form.Control
             type="text"
             name="firstName"
@@ -42,7 +42,7 @@ class ContactFormFields extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formLastName">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label>Last Name *</Form.Label>
           <Form.Control
             type="text"
             name="lastName"
@@ -58,7 +58,7 @@ class ContactFormFields extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formEmail">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Email *</Form.Label>
           <Form.Control
             type="text"
             name="email"
@@ -74,7 +74,7 @@ class ContactFormFields extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formCaseRole">
-          <Form.Label>Court Role</Form.Label>
+          <Form.Label>Court Role *</Form.Label>
           <br></br>
           <ToggleButtonGroup type="radio" name="caseRole" size="sm">
             <ToggleButton

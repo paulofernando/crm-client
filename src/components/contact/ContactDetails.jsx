@@ -17,11 +17,6 @@ const ContactDetails = (props) => {
                             Case #{props.contact.courtCase.id}
                         </Link>
                     }
-                    {props.courtCase &&
-                        <Link className="contactCaseId" to={`/case/${props.courtCase.id}`}>
-                            Case #{props.courtCase.id}
-                        </Link>
-                    }
                     <Row>
                         <Col></Col>
                         <Col className="contactCaseRole">{props.contact.caseRole}</Col>

@@ -94,14 +94,14 @@ class CreateContactForm extends React.Component {
                         courtCaseId: parseInt(values.caseId)
                       }
                     })
-                      .then(res => {
-                        window.location.reload(false);
+                      .then(res => {                        
                         setSubmitting(false);
                         resetForm();
                         this.setState({
                           alert: "Contact created successfully!",
                           type: "success"
                         });
+                        window.location.reload(false);
                       })
                       .catch(err => {
                         setSubmitting(false);
