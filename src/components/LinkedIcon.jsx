@@ -10,6 +10,7 @@ import {
   UNASSIGN_CONTACT_CASES,
   ASSIGN_CONTACT_CASES
 } from '../graphQL/mutations'
+import {GET_CONTACTS} from '../graphQL/queries'
 
 
 function LinkedIcon(props) {
@@ -28,6 +29,15 @@ function LinkedIcon(props) {
 
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
+
+  const onUpdate = (cache, { data: { updateContact } }) => {
+    const { myContacts } = cache.readQuery({ query: GET_CONTACTS });
+    cache.writeQuery({
+      query: GET_CONTACTS,
+      data: { myContacts: myContacts.concat([updateContact]) }
+    });
+    this.handleCancel();
+  };
 
   return (
     <>      
@@ -140,7 +150,10 @@ function LinkedIcon(props) {
           </Query>
         </Modal.Body>
         <Modal.Footer>
-          <Mutation mutation={ASSIGN_CONTACT_CASES}>
+          <Mutation 
+              mutation={ASSIGN_CONTACT_CASES}
+              update={onUpdate}
+            >
             {(updateContact, { error, data }) => (
               <form
                 onSubmit={e => {
@@ -153,8 +166,7 @@ function LinkedIcon(props) {
                       }
                     })
                     .then(res => {                        
-                      handleCloseAssign();
-                      window.location.reload(false);                      
+                      handleCloseAssign();                  
                     })
                     .catch(err => {
                       handleAlert("This case may have a contact with the same role or it does not exist.")
