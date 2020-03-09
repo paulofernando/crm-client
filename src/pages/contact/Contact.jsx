@@ -1,21 +1,10 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import ContactDetails from "../../components/contact/ContactDetails";
 import Header from "../../components/header";
 import Loading from "../loading";
-
-import { CONTACT_TILE_DATA } from "./ContactList";
-
-export const GET_CONTACT_DETAILS = gql`  
-    query ContactDetails($contactId: ID!) {
-      contact(id: $contactId) {
-        ...ContactTile
-    }
-  }
-  ${CONTACT_TILE_DATA}
-`;
+import { GET_CONTACT_DETAILS } from "../../graphQL/queries"
 
 const Contact = ({ contactId }) => {
     const { data, loading, error } = useQuery(GET_CONTACT_DETAILS, {

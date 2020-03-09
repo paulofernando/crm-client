@@ -107,3 +107,11 @@
   padding: 0.5em;
 
 }
+
+.customAlert {
+  position: fixed;
+  width: 80%;
+  top: 2em;
+  z-index: 1000;
+  cursor: pointer;
+}

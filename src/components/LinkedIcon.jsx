@@ -1,63 +1,36 @@
 import React, { useState } from "react";
-import { Modal, Button, Tooltip, OverlayTrigger, InputGroup } from "react-bootstrap";
-import gql from "graphql-tag";
+import { Modal, Button, Tooltip, OverlayTrigger, InputGroup, Alert } from "react-bootstrap";
 import { Mutation } from "@apollo/react-components";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 
 import SVGIcon from "./SVGIcon";
+import { GET_CASES_TITLES } from '../graphQL/queries'
+import { 
+  UNASSIGN_CONTACT_CASES,
+  ASSIGN_CONTACT_CASES
+} from '../graphQL/mutations'
 
-const UNASSIGN_CONTACT_CASES = gql`
-  mutation UnassignContact($contactId: ID!) {
-    updateContact(input: { id: $contactId, courtCaseId: null }) {
-      contact {
-        id
-      }
-      errors
-    }
-  }
-`;
-
-const ASSIGN_CONTACT_CASES = gql`
-  mutation AssignContact($contactId: ID!, $courtCaseId: ID!) {
-    updateContact(input: { id: $contactId, courtCaseId: $courtCaseId }) {
-      contact {
-        id
-        courtCase {
-          id
-        }
-      }
-      errors
-    }
-  }
-`;
-
-const GET_CASES_TITLES = gql`
-  query {
-    courtCases {
-      id
-      title
-    }
-  }
-`;
 
 function LinkedIcon(props) {
   const [showUnassign, setShowUnassign] = useState(false);
   const [showAssign, setShowAssign] = useState(false);
   const [selectedCase, setSelectedCase] = useState('');
   const [isHovering, setHover] = useState(false);
+  const [alert, setAlert] = useState("");
 
   const handleCloseUnassign = () => setShowUnassign(false);
   const handleShowUnassign = () => setShowUnassign(true);
   const handleCloseAssign = () => setShowAssign(false);
   const handleShowAssign = () => setShowAssign(true);
   const handleSelectedCase = (selected) => setSelectedCase(selected);
+  const handleAlert = (alertMessage) => setAlert(alertMessage);
 
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
   return (
-    <>
+    <>      
       <OverlayTrigger
         placement="right"
         delay={{ show: 800, hide: 300 }}
@@ -127,6 +100,14 @@ function LinkedIcon(props) {
         <Modal.Header closeButton>
           <Modal.Title>Assign contact</Modal.Title>
         </Modal.Header>
+        {alert ? (
+          <Alert
+            className="customAlert"
+            style={{width: 'auto'}}
+            variant={"danger"}
+            onClick={() => handleAlert("")}
+          > {alert} </Alert>
+        ) : null}
         <Modal.Body>
           Choose the case you would like to link to
           <b>
@@ -165,9 +146,19 @@ function LinkedIcon(props) {
                 onSubmit={e => {
                   e.preventDefault();
                   if (props.contact.id && selectedCase) {
-                    updateContact({ variables: { contactId: props.contact.id, courtCaseId: selectedCase } });
-                    handleCloseAssign();
-                    window.location.reload(false);
+                    updateContact({
+                      variables: {
+                        contactId: props.contact.id,
+                        courtCaseId: selectedCase
+                      }
+                    })
+                    .then(res => {                        
+                      handleCloseAssign();
+                      window.location.reload(false);                      
+                    })
+                    .catch(err => {
+                      handleAlert("This case may have a contact with the same role or it does not exist.")
+                    });                    
                   }
                 }}
               >

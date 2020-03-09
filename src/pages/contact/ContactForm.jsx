@@ -1,7 +1,6 @@
 import React from "react";
 import { Alert, Form } from "react-bootstrap";
 import { Formik } from "formik";
-import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
@@ -11,45 +10,13 @@ import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
 import Header from "../../components/header";
 import ContactFormFields from "../../components/contact/ContactFormFields";
 
+import {
+  GET_CONTACTS,
+  GET_CASES_TITLES
+} from "../../graphQL/queries"
+import { CREATE_CONTACT } from "../../graphQL/mutations"
+
 import { validContactSchema } from "../../validation";
-
-const CREATE_CONTACT = gql`
-  mutation CreateContact(
-    $firstName: String!
-    $lastName: String!
-    $caseRole: [Role]!
-    $email: String!
-    $courtCaseId: [ID]
-  ) {
-    createContact(
-      input: {
-        firstName: $firstName
-        lastName: $lastName
-        caseRole: $caseRole
-        email: $email
-        courtCaseId: $courtCaseId
-      }
-    ) {
-      contact {
-        id
-        firstName
-        lastName
-        caseRole
-        email
-      }
-      errors
-    }
-  }
-`;
-
-const GET_CASES_TITLES = gql`
-  query {
-    courtCases {
-      id
-      title
-    }
-  }
-`;
 
 class CreateContactForm extends React.Component {
   constructor(props) {
@@ -67,11 +34,24 @@ class CreateContactForm extends React.Component {
         <Header title={"Create Contact"} />
 
         {this.state.alert && this.state.type ? (
-          <Alert variant={this.state.type}>{this.state.alert}</Alert>
+          <Alert
+            className="customAlert"
+            variant={this.state.type}
+            onClick={() => this.setState({ alert: "" })}
+          > {this.state.alert} </Alert>
         ) : null}
 
         <CONTAINER>
-          <Mutation mutation={CREATE_CONTACT}>
+          <Mutation 
+            mutation={CREATE_CONTACT}
+            update={(cache, { data: { createContact } }) => {
+              // let c = cache.readQuery({ query: GET_CONTACTS });
+              // console.log(c)
+              // cache.writeQuery({
+              //   query: GET_CONTACTS,
+              //   data: { contacts: contacts.concat([createContact]) },
+              // });
+            }}>
             {(createContact, { data }) => (
               <div>
                 <Formik
@@ -94,14 +74,14 @@ class CreateContactForm extends React.Component {
                         courtCaseId: parseInt(values.caseId)
                       }
                     })
-                      .then(res => {                        
+                      .then(res => {
                         setSubmitting(false);
                         resetForm();
                         this.setState({
                           alert: "Contact created successfully!",
                           type: "success"
                         });
-                        window.location.reload(false);
+                        //window.location.reload(false);
                       })
                       .catch(err => {
                         setSubmitting(false);
