@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaseDetails renders correctly 1`] = `ShallowWrapper {}`;
+
+exports[`CaseDetails renders correctly 2`] = `ShallowWrapper {}`;

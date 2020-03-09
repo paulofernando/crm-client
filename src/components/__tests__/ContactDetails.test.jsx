@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ContactTile from '../contact/ContactTile';
+import ContactDetails from '../contact/ContactDetails';
 
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
-describe('ContactTile', () => {
+describe('ContactDetails', () => {
 
     it('renders correctly', () => {
         const contact = {
@@ -16,13 +16,13 @@ describe('ContactTile', () => {
             email: "js@js.com",
             courtCaseId: 1
         }
-
-        let wrapper = shallow(<ContactTile contact={contact} />);
+        
+        let wrapper = shallow(<ContactDetails contact={contact} />);
         expect(wrapper).toMatchSnapshot();
 
-        delete contact.courtCaseId
-        wrapper = shallow(<ContactTile contact={contact} />);
+        delete contact.courtCaseId;
+        wrapper = shallow(<ContactDetails contact={contact} />);
         expect(wrapper).toMatchSnapshot();
     });
-
+    
 });
