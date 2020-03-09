@@ -24,9 +24,18 @@ class CreateContactForm extends React.Component {
     this.state = {
       alert: "",
       type: "",
-      caseOptions: ""
+      caseId: ""
     };
   }
+
+  onUpdate = (cache, { data: { createContact } }) => {
+    const { myContacts } = cache.readQuery({ query: GET_CONTACTS });
+    cache.writeQuery({
+      query: GET_CONTACTS,
+      data: { myContacts: myContacts.concat([createContact]) }
+    });
+    this.handleCancel();
+  };
 
   render() {
     return (
@@ -43,15 +52,9 @@ class CreateContactForm extends React.Component {
 
         <CONTAINER>
           <Mutation 
-            mutation={CREATE_CONTACT}
-            update={(cache, { data: { createContact } }) => {
-              // let c = cache.readQuery({ query: GET_CONTACTS });
-              // console.log(c)
-              // cache.writeQuery({
-              //   query: GET_CONTACTS,
-              //   data: { contacts: contacts.concat([createContact]) },
-              // });
-            }}>
+              mutation={CREATE_CONTACT}
+              update={this.onUpdate}
+            >
             {(createContact, { data }) => (
               <div>
                 <Formik
@@ -60,8 +63,7 @@ class CreateContactForm extends React.Component {
                     firstName: "",
                     lastName: "",
                     email: "",
-                    caseRole: "",
-                    caseId: ""
+                    caseRole: ""
                   }}
                   validationSchema={validContactSchema}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -74,14 +76,13 @@ class CreateContactForm extends React.Component {
                         courtCaseId: parseInt(values.caseId)
                       }
                     })
-                      .then(res => {
+                      .then(res => {                        
                         setSubmitting(false);
                         resetForm();
                         this.setState({
                           alert: "Contact created successfully!",
                           type: "success"
-                        });
-                        //window.location.reload(false);
+                        });                        
                       })
                       .catch(err => {
                         setSubmitting(false);
@@ -132,9 +133,11 @@ class CreateContactForm extends React.Component {
                                   id="autocompleteCases"
                                   name="caseId"
                                   options={options}
+                                  value={values.caseId}
                                   placeholder="Choose a case..."
-                                  onChange={selected =>
-                                    setFieldValue("caseId", selected[0].id)
+                                  onChange={selected => {
+                                      setFieldValue("caseId", selected[0].id)
+                                    }
                                   }
                                   className={
                                     touched.caseId && errors.caseId
