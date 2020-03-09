@@ -1,37 +1,11 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import '../../App.css';
 import CourtCaseTile from "../../components/case/CaseTile";
 import Header from "../../components/header";
 import Loading from "../loading";
-
-export const COURT_CASE_TILE_DATA = gql`
-  fragment CourtCaseTile on CourtCase {
-    id
-    title
-    description
-    courtDate
-    value
-    contacts {
-      id
-      firstName
-      lastName
-      caseRole
-      email
-    }
-  }
-`;
-
-const GET_COURT_CASES = gql`
-    query {
-      courtCases {
-        ...CourtCaseTile
-      }
-    }
-    ${COURT_CASE_TILE_DATA}
-`;
+import { GET_COURT_CASES } from "../../graphQL/queries"
 
 const CourtCases = () => {
   const { data, loading, error } = useQuery(GET_COURT_CASES);

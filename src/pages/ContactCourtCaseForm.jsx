@@ -1,7 +1,6 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { Formik } from "formik";
-import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 
 import "../App.css";
@@ -9,42 +8,9 @@ import { CONTAINER, FORM, BUTTON } from "../components/StyledComponents";
 import Header from "../components/header";
 import ContactFormFields from "../components/contact/ContactFormFields";
 import CaseFormFields from "../components/case/CaseFormFields";
+import { CREATE_CONTACT_COURT_CASE } from "../graphQL/mutations"
 
 import { validContactCourtCaseSchema } from "../validation";
-
-const CREATE_CONTACT_COURT_CASE = gql`
-  mutation CreateContactCourtCase(
-    $title: String!
-    $description: String!
-    $value: Float!
-    $courtDate: String!
-    $firstName: String!
-    $lastName: String!
-    $caseRole: [Role]!
-    $email: String!
-  ) {
-    createContactCourtCase(
-      input: {
-        title: $title
-        description: $description
-        value: $value
-        courtDate: $courtDate
-        firstName: $firstName
-        lastName: $lastName
-        caseRole: $caseRole
-        email: $email
-      }
-    ) {
-      contact {
-        id
-      }
-      courtCase {
-        id
-      }
-      errors
-    }
-  }
-`;
 
 class CreateContactCourtCaseForm extends React.Component {
   constructor(props) {

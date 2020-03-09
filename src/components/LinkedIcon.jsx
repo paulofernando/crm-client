@@ -1,45 +1,16 @@
 import React, { useState } from "react";
 import { Modal, Button, Tooltip, OverlayTrigger, InputGroup, Alert } from "react-bootstrap";
-import gql from "graphql-tag";
 import { Mutation } from "@apollo/react-components";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 
 import SVGIcon from "./SVGIcon";
+import { GET_CASES_TITLES } from '../graphQL/queries'
+import { 
+  UNASSIGN_CONTACT_CASES,
+  ASSIGN_CONTACT_CASES
+} from '../graphQL/mutations'
 
-const UNASSIGN_CONTACT_CASES = gql`
-  mutation UnassignContact($contactId: ID!) {
-    updateContact(input: { id: $contactId, courtCaseId: null }) {
-      contact {
-        id
-      }
-      errors
-    }
-  }
-`;
-
-const ASSIGN_CONTACT_CASES = gql`
-  mutation AssignContact($contactId: ID!, $courtCaseId: ID!) {
-    updateContact(input: { id: $contactId, courtCaseId: $courtCaseId }) {
-      contact {
-        id
-        courtCase {
-          id
-        }
-      }
-      errors
-    }
-  }
-`;
-
-const GET_CASES_TITLES = gql`
-  query {
-    courtCases {
-      id
-      title
-    }
-  }
-`;
 
 function LinkedIcon(props) {
   const [showUnassign, setShowUnassign] = useState(false);
