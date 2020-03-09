@@ -10,6 +10,7 @@ import CaseFormFields from "../../components/case/CaseFormFields";
 
 import { validCourtCaseSchema } from "../../validation";
 import { CREATE_COURT_CASE } from "../../graphQL/mutations"
+import { GET_COURT_CASES } from "../../graphQL/queries"
 
 class CreateCourtCaseForm extends React.Component {
   constructor(props) {
@@ -27,6 +28,15 @@ class CreateCourtCaseForm extends React.Component {
     });
   };
 
+  onUpdate = (cache, { data: { createCourtCase } }) => {
+    const { myCourtCases } = cache.readQuery({ query: GET_COURT_CASES });
+    cache.writeQuery({
+      query: GET_COURT_CASES,
+      data: { myCourtCases: myCourtCases.concat([createCourtCase]) }
+    });
+    this.handleCancel();
+  };
+
   render() {
     return (
       <div>
@@ -41,7 +51,10 @@ class CreateCourtCaseForm extends React.Component {
         ) : null}
 
         <CONTAINER>
-          <Mutation mutation={CREATE_COURT_CASE}>
+          <Mutation 
+              mutation={CREATE_COURT_CASE}
+              update={this.onUpdate}
+            >
             {(createCourtCase, { data }) => (
               <div>
                 <Formik
@@ -72,7 +85,6 @@ class CreateCourtCaseForm extends React.Component {
                           alert: "Court case created successfully!",
                           type: "success"
                         });
-                        window.location.reload(false);
                       })
                       .catch(err => {
                         setSubmitting(false);
