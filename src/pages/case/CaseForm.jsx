@@ -60,7 +60,11 @@ class CreateCourtCaseForm extends React.Component {
         <Header title={"Create Case"} />
 
         {this.state.alert && this.state.type ? (
-          <Alert variant={this.state.type}>{this.state.alert}</Alert>
+          <Alert
+            className="customAlert"
+            variant={this.state.type}
+            onClick={() => this.setState({ alert: "" })}
+          > {this.state.alert} </Alert>
         ) : null}
 
         <CONTAINER>

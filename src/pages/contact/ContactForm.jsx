@@ -67,7 +67,11 @@ class CreateContactForm extends React.Component {
         <Header title={"Create Contact"} />
 
         {this.state.alert && this.state.type ? (
-          <Alert variant={this.state.type}>{this.state.alert}</Alert>
+          <Alert
+            className="customAlert"
+            variant={this.state.type}
+            onClick={() => this.setState({ alert: "" })}
+          > {this.state.alert} </Alert>
         ) : null}
 
         <CONTAINER>
@@ -94,7 +98,7 @@ class CreateContactForm extends React.Component {
                         courtCaseId: parseInt(values.caseId)
                       }
                     })
-                      .then(res => {                        
+                      .then(res => {
                         setSubmitting(false);
                         resetForm();
                         this.setState({
