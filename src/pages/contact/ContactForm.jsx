@@ -34,7 +34,6 @@ class CreateContactForm extends React.Component {
       query: GET_CONTACTS,
       data: { myContacts: myContacts.concat([createContact]) }
     });
-    this.handleCancel();
   };
 
   render() {

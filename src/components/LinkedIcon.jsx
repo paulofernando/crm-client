@@ -36,7 +36,6 @@ function LinkedIcon(props) {
       query: GET_CONTACTS,
       data: { myContacts: myContacts.concat([updateContact]) }
     });
-    this.handleCancel();
   };
 
   return (
@@ -80,14 +79,27 @@ function LinkedIcon(props) {
           <b>{props.courtCase && props.courtCase.title}</b>?
         </Modal.Body>
         <Modal.Footer>
-          <Mutation mutation={UNASSIGN_CONTACT_CASES}>
+          <Mutation 
+              mutation={UNASSIGN_CONTACT_CASES}
+              update={onUpdate}
+            >
             {(updateContact, { error, data }) => (
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  updateContact({ variables: { contactId: props.contact.id } });
+                  updateContact({ 
+                    variables: {
+                      contactId: props.contact.id
+                    }
+                  })
+                  .then(res => {                        
+                    window.location.reload(false);
+                  })
+                  .catch(err => {
+                    handleAlert("Error on trying to unassign contact")
+                  });
+
                   handleCloseUnassign();
-                  window.location.reload(false);
                 }}
               >
                 <Button

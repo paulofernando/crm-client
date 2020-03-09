@@ -34,7 +34,6 @@ class CreateCourtCaseForm extends React.Component {
       query: GET_COURT_CASES,
       data: { myCourtCases: myCourtCases.concat([createCourtCase]) }
     });
-    this.handleCancel();
   };
 
   render() {
