@@ -10,6 +10,7 @@ import {
   UNASSIGN_CONTACT_CASES,
   ASSIGN_CONTACT_CASES
 } from '../graphQL/mutations'
+import {GET_CONTACTS} from '../graphQL/queries'
 
 
 function LinkedIcon(props) {
@@ -28,6 +29,18 @@ function LinkedIcon(props) {
 
   const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
+
+  const onUpdate = (cache, { data: { updateContact } }) => {
+    try {
+      const { contacts } = cache.readQuery({ query: GET_CONTACTS });
+      cache.writeQuery({
+        query: GET_CONTACTS,
+        data: { contacts: contacts.concat([updateContact]) }
+      });
+    } catch (e) {
+      window.location.reload(false);
+    }
+  };
 
   return (
     <>      
@@ -70,14 +83,27 @@ function LinkedIcon(props) {
           <b>{props.courtCase && props.courtCase.title}</b>?
         </Modal.Body>
         <Modal.Footer>
-          <Mutation mutation={UNASSIGN_CONTACT_CASES}>
+          <Mutation 
+              mutation={UNASSIGN_CONTACT_CASES}
+              update={onUpdate}
+            >
             {(updateContact, { error, data }) => (
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  updateContact({ variables: { contactId: props.contact.id } });
+                  updateContact({ 
+                    variables: {
+                      contactId: props.contact.id
+                    }
+                  })
+                  .then(res => {                        
+                    window.location.reload(false);
+                  })
+                  .catch(err => {
+                    handleAlert("Error on trying to unassign contact")
+                  });
+
                   handleCloseUnassign();
-                  window.location.reload(false);
                 }}
               >
                 <Button
@@ -140,7 +166,10 @@ function LinkedIcon(props) {
           </Query>
         </Modal.Body>
         <Modal.Footer>
-          <Mutation mutation={ASSIGN_CONTACT_CASES}>
+          <Mutation 
+              mutation={ASSIGN_CONTACT_CASES}
+              update={onUpdate}
+            >
             {(updateContact, { error, data }) => (
               <form
                 onSubmit={e => {
@@ -153,8 +182,7 @@ function LinkedIcon(props) {
                       }
                     })
                     .then(res => {                        
-                      handleCloseAssign();
-                      window.location.reload(false);                      
+                      handleCloseAssign();                  
                     })
                     .catch(err => {
                       handleAlert("This case may have a contact with the same role or it does not exist.")
