@@ -35,7 +35,7 @@ class CreateContactForm extends React.Component {
         data: { contacts: contacts.concat([createContact]) }
       });
     } catch (e) {
-      window.location.reload(false);
+      //window.location.reload(false);
     }
   };
 
@@ -56,6 +56,9 @@ class CreateContactForm extends React.Component {
           <Mutation 
               mutation={CREATE_CONTACT}
               update={this.onUpdate}
+              refetchQueries = {[
+                { query: GET_CONTACTS }
+              ]}
             >
             {(createContact, { data }) => (
               <div>
@@ -115,7 +118,7 @@ class CreateContactForm extends React.Component {
                           handleBlur={handleBlur}
                           setFieldValue={setFieldValue}
                         />
-                        <Form.Group controlId="formCourtCase">
+                        <Form.Group className="ml-4 mr-4" controlId="formCourtCase">
                           <Form.Label>Case</Form.Label>
                           <Query query={GET_CASES_TITLES}>
                             {({ loading, error, data }) => {
@@ -141,6 +144,7 @@ class CreateContactForm extends React.Component {
                                   name="caseId"
                                   options={options}
                                   value={values.caseId}
+                                  disabled={values.caseRole === ""}
                                   placeholder="Choose a case..."
                                   onChange={selected => {
                                       if (selected[0]) {

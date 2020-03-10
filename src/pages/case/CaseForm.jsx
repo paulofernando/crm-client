@@ -36,7 +36,7 @@ class CreateCourtCaseForm extends React.Component {
         data: { courtCases: courtCases.concat([createCourtCase]) }
       });
     } catch (e) {
-      window.location.reload(false);
+      //window.location.reload(false);
     }
   };
 
@@ -57,6 +57,9 @@ class CreateCourtCaseForm extends React.Component {
           <Mutation 
               mutation={CREATE_COURT_CASE}
               update={this.onUpdate}
+              refetchQueries = {[
+                { query: GET_COURT_CASES }
+              ]}
             >
             {(createCourtCase, { data }) => (
               <div>
