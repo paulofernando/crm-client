@@ -138,7 +138,9 @@ class CreateContactForm extends React.Component {
                                   value={values.caseId}
                                   placeholder="Choose a case..."
                                   onChange={selected => {
-                                      setFieldValue("caseId", selected[0].id)
+                                      if (selected[0]) {
+                                        setFieldValue("caseId", selected[0].id)
+                                      }
                                     }
                                   }
                                   className={
