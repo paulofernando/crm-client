@@ -23,8 +23,7 @@ class CreateContactForm extends React.Component {
     super(props);
     this.state = {
       alert: "",
-      type: "",
-      caseId: ""
+      type: ""
     };
   }
 
