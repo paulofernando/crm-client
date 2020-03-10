@@ -115,3 +115,7 @@
   z-index: 1000;
   cursor: pointer;
 }
+
+.disabledLink {
+  pointer-events: none;
+}

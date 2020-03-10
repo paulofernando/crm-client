@@ -85,14 +85,18 @@ class Dashboard extends React.Component {
                         placeholder="Choose a case..."
                         options={options}
                         onChange={selected => {
-                            if (selected[0]) {
-                              this.setState({ caseId: selected[0].id })
-                            }
+                          if (selected[0]) {
+                            this.setState({ caseId: selected[0].id });
                           }
-                        }
+                        }}
                       />
                       <InputGroup.Append>
-                        <Link to={`/case/${this.state.caseId}`}>
+                        <Link
+                          className={
+                            this.state.caseId === "" ? "disabledLink" : ""
+                          }
+                          to={`/case/${this.state.caseId}`}
+                        >
                           <Button variant="primary">Search</Button>
                         </Link>
                       </InputGroup.Append>
@@ -134,14 +138,18 @@ class Dashboard extends React.Component {
                         placeholder="Choose a contact..."
                         options={options}
                         onChange={selected => {
-                            if (selected[0]) {
-                              this.setState({ contactId: selected[0].id })
-                            }
+                          if (selected[0]) {
+                            this.setState({ contactId: selected[0].id });
                           }
-                        }
+                        }}
                       />
                       <InputGroup.Append>
-                        <Link to={`/contact/${this.state.contactId}`}>
+                        <Link
+                          className={
+                            this.state.contactId === "" ? "disabledLink" : ""
+                          }
+                          to={`/contact/${this.state.contactId}`}
+                        >
                           <Button variant="primary">Search</Button>
                         </Link>
                       </InputGroup.Append>
@@ -153,8 +161,8 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="specialDashboardLink">
-          <Link style={{ textDecoration: 'none' }} to="/case/createWithContact">
-            <div className="dashboardButton specialButton" >
+          <Link style={{ textDecoration: "none" }} to="/case/createWithContact">
+            <div className="dashboardButton specialButton">
               <span className="mr-3">Court Case + Contact</span>
               <SVGIcon name="create" width="24" />
             </div>
