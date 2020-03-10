@@ -23,8 +23,7 @@ class CreateContactForm extends React.Component {
     super(props);
     this.state = {
       alert: "",
-      type: "",
-      caseId: ""
+      type: ""
     };
   }
 
@@ -124,12 +123,17 @@ class CreateContactForm extends React.Component {
                               if (error) return <div>Error</div>;
 
                               const options = [];
-                              data.courtCases.map(item =>
-                                options.push({
-                                  label: `${item.id} - ${item.title}`,
-                                  id: item.id
-                                })
-                              );
+                              data.courtCases.map(item => {
+                                let caseHasRole = false
+                                for(var i = 0; i < item.contacts.length; i++) {
+                                  if (item.contacts[i].caseRole === values.caseRole) {
+                                    caseHasRole = true
+                                    break;
+                                  }
+                                }
+
+                                if (!caseHasRole) options.push({ label: `${item.id} - ${item.title}`, id: item.id })
+                              });
 
                               return (
                                 <Typeahead
@@ -139,7 +143,9 @@ class CreateContactForm extends React.Component {
                                   value={values.caseId}
                                   placeholder="Choose a case..."
                                   onChange={selected => {
-                                      setFieldValue("caseId", selected[0].id)
+                                      if (selected[0]) {
+                                        setFieldValue("caseId", selected[0].id)
+                                      }
                                     }
                                   }
                                   className={
