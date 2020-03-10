@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CaseDetails renders correctly 1`] = `ShallowWrapper {}`;
-
-exports[`CaseDetails renders correctly 2`] = `ShallowWrapper {}`;
+exports[`CaseDetails renders correctly 1`] = `
+<div
+  className="courtCaseCard courtCaseDetailed"
+>
+  <h3
+    className="courtCaseTitle"
+  >
+    Test title
+  </h3>
+  <p
+    className="courtCaseDescription"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin arcu enim, tincidunt fringilla rhoncus vitae, semper quis quam. Nam et tincidunt ex. Nunc ut ante id lorem consectetur vulputate ut non nulla. Curabitur viverra, libero vel rutrum volutpat, erat orci eleifend sem, sit amet vestibulum leo lectus at quam
+  </p>
+  <div
+    className="cardContainer"
+  />
+  <time
+    className="courtCaseDate"
+    dateTime={"2020-01-01T00:00:00.000Z"}
+  >
+    December 31st 2019
+  </time>
+  <span
+    className="courtCaseValue"
+  >
+    $1,000
+  </span>
+</div>
+`;

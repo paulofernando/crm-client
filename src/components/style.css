@@ -127,18 +127,9 @@ div.prosecutor {
 
 .courtCaseDescription {    
     opacity: .9;
+    
 }
 .courtCaseValue {
-    float: right;
-    color: black;
-    background-color: limegreen;
-    border-radius: 6px;
-    padding: 3px;
-    font-size: small;
-    opacity: .9;
-}
-
-.courtCaseDate {
     float: right;
     color: black;
     background-color: limegreen;

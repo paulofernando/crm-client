@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContactTile renders correctly 1`] = `ShallowWrapper {}`;
-
-exports[`ContactTile renders correctly 2`] = `ShallowWrapper {}`;
+exports[`ContactTile renders correctly 1`] = `
+<a
+  href="/contact/undefined"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  <div
+    className="smallContactCard"
+  >
+    <div
+      className="judge"
+    >
+      John
+    </div>
+  </div>
+</a>
+`;
