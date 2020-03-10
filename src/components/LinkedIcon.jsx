@@ -5,12 +5,11 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 
 import SVGIcon from "./SVGIcon";
-import { GET_CASES_TITLES } from '../graphQL/queries'
+import { GET_CASES_TITLES, GET_CONTACTS } from '../graphQL/queries'
 import { 
   UNASSIGN_CONTACT_CASES,
   ASSIGN_CONTACT_CASES
 } from '../graphQL/mutations'
-import {GET_CONTACTS} from '../graphQL/queries'
 
 
 function LinkedIcon(props) {
@@ -38,7 +37,7 @@ function LinkedIcon(props) {
         data: { contacts: contacts.concat([updateContact]) }
       });
     } catch (e) {
-      window.location.reload(false);
+      //window.location.reload(false);
     }
   };
 
@@ -86,6 +85,10 @@ function LinkedIcon(props) {
           <Mutation 
               mutation={UNASSIGN_CONTACT_CASES}
               update={onUpdate}
+              refetchQueries = {[
+                { query: GET_CONTACTS },
+                { query: GET_CASES_TITLES },
+              ]}
             >
             {(updateContact, { error, data }) => (
               <form
@@ -96,14 +99,12 @@ function LinkedIcon(props) {
                       contactId: props.contact.id
                     }
                   })
-                  .then(res => {                        
-                    window.location.reload(false);
+                  .then(res => {
+                    handleCloseUnassign();
                   })
                   .catch(err => {
                     handleAlert("Error on trying to unassign contact")
                   });
-
-                  handleCloseUnassign();
                 }}
               >
                 <Button
@@ -177,6 +178,10 @@ function LinkedIcon(props) {
           <Mutation 
               mutation={ASSIGN_CONTACT_CASES}
               update={onUpdate}
+              refetchQueries = {[
+                { query: GET_CONTACTS },
+                { query: GET_CASES_TITLES },
+              ]}
             >
             {(updateContact, { error, data }) => (
               <form
