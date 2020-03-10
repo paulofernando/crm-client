@@ -9,6 +9,7 @@ import Header from "../components/header";
 import ContactFormFields from "../components/contact/ContactFormFields";
 import CaseFormFields from "../components/case/CaseFormFields";
 import { CREATE_CONTACT_COURT_CASE } from "../graphQL/mutations"
+import { GET_CONTACTS, GET_COURT_CASES } from "../graphQL/queries"
 
 import { validContactCourtCaseSchema } from "../validation";
 
@@ -42,7 +43,11 @@ class CreateContactCourtCaseForm extends React.Component {
         ) : null}
 
         <CONTAINER>
-          <Mutation mutation={CREATE_CONTACT_COURT_CASE}>
+          <Mutation mutation={CREATE_CONTACT_COURT_CASE}
+          refetchQueries = {[
+            { query: GET_CONTACTS },
+            { query: GET_COURT_CASES }
+          ]}>
             {(createContactCourtCase, { data }) => (
               <div>
                 <Formik
