@@ -75,6 +75,9 @@ export const GET_CASES_TITLES = gql`
     courtCases {
       id
       title
+      contacts {
+        caseRole
+      }
     }
   }
 `;

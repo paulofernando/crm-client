@@ -145,9 +145,17 @@ function LinkedIcon(props) {
               if (error) return <div>Error</div>;
 
               const options = [];
-              data.courtCases.map(item =>
-                options.push({ label: `${item.id} - ${item.title}`, id: item.id })
-              );
+              data.courtCases.map(item => {
+                let caseHasRole = false
+                for(var i = 0; i < item.contacts.length; i++) {
+                  if (item.contacts[i].caseRole === props.contact.caseRole) {
+                    caseHasRole = true
+                    break;
+                  }
+                }
+
+                if (!caseHasRole) options.push({ label: `${item.id} - ${item.title}`, id: item.id })
+              });
 
               return (
                 <InputGroup className="mb-3">
