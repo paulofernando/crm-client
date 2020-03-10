@@ -79,7 +79,11 @@ class CaseFormFields extends React.Component {
             onBlur={handleBlur}
             selected={courtDate}
             onChange={handleDateChange}
+            className={touched.courtDate && errors.courtDate ? "error" : null}
           />
+          {touched.courtDate && !courtDate ? (
+            <div className="error-message">This field is required</div>
+          ) : null}
         </Form.Group>
       </>
     );
