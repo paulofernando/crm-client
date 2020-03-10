@@ -29,11 +29,15 @@ class CreateContactForm extends React.Component {
   }
 
   onUpdate = (cache, { data: { createContact } }) => {
-    const { myContacts } = cache.readQuery({ query: GET_CONTACTS });
-    cache.writeQuery({
-      query: GET_CONTACTS,
-      data: { myContacts: myContacts.concat([createContact]) }
-    });
+    try {
+      const { contacts } = cache.readQuery({ query: GET_CONTACTS });
+      cache.writeQuery({
+        query: GET_CONTACTS,
+        data: { contacts: contacts.concat([createContact]) }
+      });
+    } catch (e) {
+      window.location.reload(false);
+    }
   };
 
   render() {

@@ -31,11 +31,15 @@ function LinkedIcon(props) {
   const handleMouseLeave = () => setHover(false);
 
   const onUpdate = (cache, { data: { updateContact } }) => {
-    const { myContacts } = cache.readQuery({ query: GET_CONTACTS });
-    cache.writeQuery({
-      query: GET_CONTACTS,
-      data: { myContacts: myContacts.concat([updateContact]) }
-    });
+    try {
+      const { contacts } = cache.readQuery({ query: GET_CONTACTS });
+      cache.writeQuery({
+        query: GET_CONTACTS,
+        data: { contacts: contacts.concat([updateContact]) }
+      });
+    } catch (e) {
+      window.location.reload(false);
+    }
   };
 
   return (

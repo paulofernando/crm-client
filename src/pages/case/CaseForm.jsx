@@ -29,11 +29,15 @@ class CreateCourtCaseForm extends React.Component {
   };
 
   onUpdate = (cache, { data: { createCourtCase } }) => {
-    const { myCourtCases } = cache.readQuery({ query: GET_COURT_CASES });
-    cache.writeQuery({
-      query: GET_COURT_CASES,
-      data: { myCourtCases: myCourtCases.concat([createCourtCase]) }
-    });
+    try {
+      const { courtCases } = cache.readQuery({ query: GET_COURT_CASES });    
+      cache.writeQuery({
+        query: GET_COURT_CASES,
+        data: { courtCases: courtCases.concat([createCourtCase]) }
+      });
+    } catch (e) {
+      window.location.reload(false);
+    }
   };
 
   render() {
