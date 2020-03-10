@@ -97,7 +97,7 @@ class Dashboard extends React.Component {
                           }
                           to={`/case/${this.state.caseId}`}
                         >
-                          <Button variant="primary">Search</Button>
+                          <Button variant={this.state.caseId ? "primary" : "secondary"}>Search</Button>
                         </Link>
                       </InputGroup.Append>
                     </InputGroup>
@@ -150,7 +150,7 @@ class Dashboard extends React.Component {
                           }
                           to={`/contact/${this.state.contactId}`}
                         >
-                          <Button variant="primary">Search</Button>
+                          <Button variant={this.state.caseId ? "primary" : "secondary"}>Search</Button>
                         </Link>
                       </InputGroup.Append>
                     </InputGroup>
