@@ -81,7 +81,7 @@ describe('<Case />', () => {
         expect(screen.getByText("Title 1")).toBeInTheDocument()
         expect(screen.getByText("Description 1")).toBeInTheDocument()
         expect(screen.getByText("December 31st 2019")).toBeInTheDocument()
-        expect(screen.getByText("$1,000")).toBeInTheDocument()
+        expect(screen.getByText("$1,000.00")).toBeInTheDocument()
 
         expect(screen.getByText("Adriano Silva")).toBeInTheDocument()
         expect(screen.getByText("as@gmail.com")).toBeInTheDocument()

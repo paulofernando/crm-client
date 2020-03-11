@@ -21,6 +21,8 @@ const CourtCaseDetails = props => {
                 <NumberFormat                    
                     value={props.courtCase.value}
                     displayType={"text"}
+                    decimalScale={2}
+                    fixedDecimalScale={true}
                     thousandSeparator={true}
                     prefix={"$"}
                 />

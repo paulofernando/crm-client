@@ -5,7 +5,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 
 import SVGIcon from "./SVGIcon";
-import { GET_CASES_TITLES, GET_CONTACTS } from '../graphQL/queries'
+import { GET_CASES_TITLES, GET_CONTACTS, GET_COURT_CASE_DETAILS } from '../graphQL/queries'
 import { 
   UNASSIGN_CONTACT_CASES,
   ASSIGN_CONTACT_CASES
@@ -85,10 +85,18 @@ function LinkedIcon(props) {
           <Mutation 
               mutation={UNASSIGN_CONTACT_CASES}
               update={onUpdate}
-              refetchQueries = {[
-                { query: GET_CONTACTS },
-                { query: GET_CASES_TITLES },
-              ]}
+              refetchQueries = {props.courtCase ?
+                [
+                  { query: GET_CONTACTS },
+                  { query: GET_CASES_TITLES },
+                  { query: GET_COURT_CASE_DETAILS,
+                    variables: { courtCaseId: props.courtCase.id }
+                  },
+                ] : [
+                  { query: GET_CONTACTS },
+                  { query: GET_CASES_TITLES }
+                ]
+              }
             >
             {(updateContact, { error, data }) => (
               <form
