@@ -1,12 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { shallow, mount } from 'enzyme';
 
 import CourtCaseTile from '../case/CaseTile';
-
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
 
 // -------------------------------
 
@@ -23,9 +18,17 @@ const CourtCaseTileComponent = (<CourtCaseTile courtCase={courtCase} />)
 
 describe('CourtCaseTile', () => {
     it('renders correctly', () => {
-        const wrapper = renderer
-            .create(CourtCaseTileComponent)
-            .toJSON();
-        expect(wrapper).toMatchSnapshot();
+        const container = shallow(CourtCaseTileComponent);        
+        expect(container.html()).toMatchSnapshot();
+        
+        const component = mount(
+            <CourtCaseTile courtCase={courtCase} />
+        );
+
+        const courtCaseTitle = component.find('.courtCaseTitle');
+        expect(courtCaseTitle.text()).toBe('Test title');
+
+        const courtCaseDescription = component.find('.courtCaseDescription');
+        expect(courtCaseDescription.text()).toBe('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin arcu enim, tincidunt fringilla rhoncus vitae, semper quis quam. Nam et tincidunt ex. Nunc ut ante id lorem consectetur vulputate ut non nulla. Curabitur viverra, libero vel rutrum volutpat, erat orci eleifend sem, sit amet vestibulum leo lectus at quam');        
     });
 });

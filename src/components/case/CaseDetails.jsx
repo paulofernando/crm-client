@@ -16,14 +16,15 @@ const CourtCaseDetails = props => {
                         <ContactTile key={contact.id} contact={contact} courtCase={props.courtCase} />
                     ))}
             </div>
-            <Moment className="courtCaseDate" format="MMMM Do YYYY">{props.courtCase.courtDate}</Moment>            
-            <NumberFormat
-            className="courtCaseValue"
-                value={props.courtCase.value}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"$"}
-            />            
+            <Moment className="courtCaseDate" format="MMMM Do YYYY">{props.courtCase.courtDate}</Moment>
+            <div className="courtCaseValue">
+                <NumberFormat                    
+                    value={props.courtCase.value}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                />
+            </div>
         </div>
     );
 };

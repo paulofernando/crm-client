@@ -4,10 +4,6 @@ import renderer from 'react-test-renderer';
 
 import DashoardButton from '../DashoardButton';
 
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
-
 // -------------------------------
 
 const DashoardButtonComponent = (
@@ -21,10 +17,8 @@ const DashoardButtonComponent = (
 
 describe('DashoardButton', () => {
     it('renders correctly', () => {
-        const wrapper = renderer
-            .create(DashoardButtonComponent)
-            .toJSON();
-        expect(wrapper).toMatchSnapshot();
+        const container = shallow(DashoardButtonComponent);        
+        expect(container.html()).toMatchSnapshot();     
     });
 
 });
