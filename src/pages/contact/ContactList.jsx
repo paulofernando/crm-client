@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/react-hooks";
 
 import '../../App.css';
 import ContactTile from "../../components/contact/ContactDetails";
-import Header from "../../components/header";
-import Loading from "../loading";
+import Header from "../../components/Header";
+import Loading from "../Loading";
 import { GET_CONTACTS } from "../../graphQL/queries"
 
 const Contacts = () => {

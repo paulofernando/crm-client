@@ -7,7 +7,7 @@ import { Query } from "react-apollo";
 
 import "../../App.css";
 import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import ContactFormFields from "../../components/contact/ContactFormFields";
 
 import {

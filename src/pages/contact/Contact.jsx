@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 
 import ContactDetails from "../../components/contact/ContactDetails";
-import Header from "../../components/header";
-import Loading from "../loading";
+import Header from "../../components/Header";
+import Loading from "../Loading";
 import { GET_CONTACT_DETAILS } from "../../graphQL/queries"
 
 const Contact = ({ contactId }) => {
