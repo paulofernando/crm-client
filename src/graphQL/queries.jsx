@@ -19,11 +19,11 @@ export const COURT_CASE_TILE_DATA = gql`
 
 export const CONTACT_TILE_DATA = gql`
   fragment ContactTile on Contact {
-    id,
-    firstName,
-    lastName,
-    caseRole,
-    email,
+    id
+    firstName
+    lastName
+    caseRole
+    email
     courtCase {
       id
       title
