@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactTile renders correctly 1`] = `"<a style=\\"text-decoration:none\\" href=\\"/contact/undefined\\"><div class=\\"smallContactCard\\"><div class=\\"judge\\">John</div></div></a>"`;

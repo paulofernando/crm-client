@@ -10,13 +10,13 @@ const ContactDetails = (props) => {
         <div className="cardContainer">
             <div className="contactCard">
                 <div className={`${props.contact.caseRole.toLowerCase()}`}>
-                    <h3>{props.contact.firstName} {props.contact.lastName}</h3>
+                    <h3 className="contactFullName">{props.contact.firstName} {props.contact.lastName}</h3>
                     <OverlayTrigger
                         placement="top"
                         delay={{ show: 1000, hide: 300 }}
                         overlay={<Tooltip>{props.contact.email}</Tooltip>}
                     >
-                        <div className="contactEmail truncate">{props.contact.email}</div>
+                    <div className="contactEmail truncate">{props.contact.email}</div>
                     </OverlayTrigger>
                     {props.contact.courtCase &&
                         <Link className="contactCaseId" to={`/case/${props.contact.courtCase.id}`}>

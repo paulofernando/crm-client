@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaseFormFields renders correctly 1`] = `
+Array [
+  <div
+    className="form-group"
+  >
+    <label
+      className="form-label"
+      htmlFor="formTitle"
+    >
+      Title *
+    </label>
+    <input
+      className="form-control"
+      id="formTitle"
+      name="title"
+      type="text"
+      value="Title test"
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label
+      className="form-label"
+      htmlFor="formLastName"
+    >
+      Description
+    </label>
+    <textarea
+      className="form-control"
+      id="formLastName"
+      name="description"
+      value="Description test"
+    />
+  </div>,
+  <div
+    className="form-group"
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <label
+      className="form-label"
+      htmlFor="formEmail"
+    >
+      Value *
+    </label>
+    <div
+      className="input-group"
+    >
+      <div
+        className="input-group-prepend"
+      >
+        <span
+          className="input-group-text"
+        >
+          $
+        </span>
+      </div>
+      <input
+        className="form-control"
+        id="formEmail"
+        name="value"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+        type="text"
+        value={1000}
+      />
+      <div
+        className="input-group-append"
+      >
+        <span
+          className="input-group-text"
+        >
+          .00
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="form-group"
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <label
+      className="form-label"
+      htmlFor="formCourtDate"
+    >
+      Court Date *
+    </label>
+    <div
+      className="react-datepicker-wrapper"
+    >
+      <div
+        className="react-datepicker__input-container"
+      >
+        <input
+          className=""
+          disabled={false}
+          name="courtDate"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          readOnly={false}
+          type="text"
+          value="12/31/2019"
+        />
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -5,7 +5,7 @@ import { Mutation } from "@apollo/react-components";
 
 import "../../App.css";
 import { CONTAINER, FORM, BUTTON } from "../../components/StyledComponents";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import CaseFormFields from "../../components/case/CaseFormFields";
 
 import { validCourtCaseSchema } from "../../validation";

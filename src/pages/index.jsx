@@ -7,7 +7,7 @@ import Contact from './contact/Contact';
 import Contacts from './contact/ContactList';
 import Case from './case/Case';
 import Cases from './case/CaseList';
-import Dashboard from './dashboard';
+import Dashboard from './Dashboard';
 import CreateCourtCaseForm from './case/CaseForm';
 import CreateContactForm from './contact/ContactForm';
 import CreateContactCourtCaseForm from './ContactCourtCaseForm';

@@ -5,10 +5,10 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import "../../App.css";
-import Header from "../../components/header";
-import DashboardButton from "../../components/DashoardButton";
-import SVGIcon from "../../components/SVGIcon";
+import "../App.css";
+import Header from "../components/Header";
+import DashboardButton from "../components/DashoardButton";
+import SVGIcon from "../components/SVGIcon";
 
 const GET_CONTACTS_NAMES = gql`
   query {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form, Button } from 'react-bootstrap';
-import Header from './header';
+import Header from './Header';
 
 export const CONTAINER = styled.div`
   background: #352f64;

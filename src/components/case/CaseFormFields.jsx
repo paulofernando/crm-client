@@ -24,6 +24,7 @@ class CaseFormFields extends React.Component {
           <Form.Control
             type="text"
             name="title"
+            className="formTitle"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.title}

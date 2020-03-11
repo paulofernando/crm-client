@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/react-hooks";
 
 import '../../App.css';
 import CourtCaseTile from "../../components/case/CaseTile";
-import Header from "../../components/header";
-import Loading from "../loading";
+import Header from "../../components/Header";
+import Loading from "../Loading";
 import { GET_COURT_CASES } from "../../graphQL/queries"
 
 const CourtCases = () => {
