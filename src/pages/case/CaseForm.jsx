@@ -84,7 +84,7 @@ class CreateCourtCaseForm extends React.Component {
                         courtDate: this.state.courtDate
                       }
                     })
-                      .then(res => {                        
+                      .then(res => {            
                         setSubmitting(false);
                         resetForm();
                         this.setState({
