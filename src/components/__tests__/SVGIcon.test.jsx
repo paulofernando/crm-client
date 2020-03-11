@@ -12,7 +12,7 @@ const SVGIconComponent = (<SVGIcon name={"logo"} width="24" />)
 describe('SVGIcon', () => {
     it('renders correctly', () => {
         const container = shallow(SVGIconComponent);        
-        expect(container.html()).toMatchSnapshot();        
+        expect(container.html()).toMatchSnapshot();
     });
 
 });

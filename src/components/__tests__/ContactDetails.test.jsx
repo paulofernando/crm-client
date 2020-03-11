@@ -10,7 +10,9 @@ const contact = {
     lastName: "Smith",
     caseRole: "Judge",
     email: "js@js.com",
-    courtCaseId: 1
+    courtCase: {
+        id: 1
+    }
 }
 
 const ContactDetailsComponent = (<ContactDetails contact={contact} />)
@@ -22,9 +24,15 @@ describe('ContactDetails', () => {
         const container = shallow(ContactDetailsComponent);        
         expect(container.html()).toMatchSnapshot();
         
+        const contactFullName = container.find('.contactFullName');
+        expect(contactFullName.text()).toBe('John Smith');
+
         const contactEmail = container.find('.contactEmail');
         expect(contactEmail.text()).toBe('js@js.com');
 
+        const contactCaseId = container.find('.contactCaseId');
+        expect(contactCaseId.text()).toBe('Case #1');
+        
         const contactCaseRole = container.find('.contactCaseRole');
         expect(contactCaseRole.text()).toBe('Judge');        
     });
