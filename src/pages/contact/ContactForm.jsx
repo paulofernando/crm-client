@@ -12,7 +12,8 @@ import ContactFormFields from "../../components/contact/ContactFormFields";
 
 import {
   GET_CONTACTS,
-  GET_CASES_TITLES
+  GET_CASES_TITLES,
+  GET_COURT_CASES
 } from "../../graphQL/queries"
 import { CREATE_CONTACT } from "../../graphQL/mutations"
 
@@ -57,7 +58,8 @@ class CreateContactForm extends React.Component {
               mutation={CREATE_CONTACT}
               update={this.onUpdate}
               refetchQueries = {[
-                { query: GET_CONTACTS }
+                { query: GET_CONTACTS },
+                { query: GET_COURT_CASES}
               ]}
             >
             {(createContact, { data }) => (
